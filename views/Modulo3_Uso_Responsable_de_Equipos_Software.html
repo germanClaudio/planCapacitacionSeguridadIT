@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Prodismo">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../images/Logo_Prodismo.ico">
+        <title>Seguridad de la Información como Compromiso Estratégico</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet"  type="text/css" href="../css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+
+    <body class="text-gray-800">
+
+        <header class="bg-white shadow-md sticky top-0 z-10">
+            <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+                <img src="../images/ProdismoFirma.jpg" alt="Logo Prodismo" width="200" height="40">
+                
+                <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
+                    Seguridad de la Información: Un Compromiso Estratégico
+                </h1>
+
+                <a href="./Modulo2_Ciberseguridad.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 mr-4"
+                    title="Ir al módulo 2 - Ciberseguridad">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                
+                <a href="./Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
+                    title="Ir al módulo 4 - Escritorio Remoto AnyDesk VPN Accesos Seguros">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </header>
+
+        <main class="container mx-auto p-6 md:p-12">
+
+            <section class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-[#00446A] mb-4">La seguridad no es un área técnica.</h2>
+                <p class="text-xl md:text-2xl text-[#0072B2] font-semibold">Es un habilitador clave para la competitividad y la confianza del cliente.</p>
+            </section>
+
+            <section id="modulo3-detalle" class="mt-16">
+                <h3 class="section-title">Módulo 3: Uso Responsable de Equipos y Software</h3>
+                <p class="section-subtitle">Este módulo establece las reglas claras de uso de los recursos informáticos, minimizando riesgos de infección, fuga de información y mal uso que podrían comprometer la seguridad de la empresa.</p>
+                
+                <section id="activos" class="mb-16">
+                    <h3 class="section-title">Reglas claras</h3>
+                    <p class="section-subtitle">Reglas claras de uso aceptable de los recursos informáticos de la empresa, minimizando riesgos de infección, fuga de información y mal uso.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div id="policy-card" class="card text-center p-4">
+                            <div class="text-6xl mb-3">📄</div>
+                            <h4 class="text-lg font-bold text-[#00446A]">Política de Uso Aceptable (MC211-IT-2)</h4>
+                        </div>
+                        <div class="card text-center p-4">
+                            <div class="text-6xl mb-3">👨‍💻</div>
+                            <h4 class="text-lg font-bold text-[#00446A]">Instalación de software</h4>
+                        </div>
+                        <div class="card text-center p-4">
+                            <div class="text-6xl mb-3">📱</div>
+                            <h4 class="text-lg font-bold text-[#00446A]">Dispositivos personales (BYOD)</h4>
+                        </div>
+                        <div class="card text-center p-4">
+                            <div class="text-6xl mb-3">🌐</div>
+                            <h4 class="text-lg font-bold text-[#00446A]">Navegación web</h4>
+                        </div>
+                        <div class="card text-center p-4">
+                            <div class="text-6xl mb-3">📧</div>
+                            <h4 class="text-lg font-bold text-[#00446A]">Redes sociales</h4>
+                        </div>
+                        <div class="card text-center p-4">
+                            <div class="text-6xl mb-3">📊</div>
+                            <h4 class="text-lg font-bold text-[#00446A]">Manejo de datos sensibles</h4>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="card flex flex-col items-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">¿Puedo instalar este software? Un flujograma de decisión.</h4>
+                        <div class="flow-container">
+                            <div class="flow-node bg-[#0072B2] text-white">
+                                ¿Necesitas instalar software para tu trabajo?
+                            </div>
+                            <div class="flow-line"></div>
+                            <div class="flow-arrow"></div>
+                            <div class="flow-node">
+                                ¿Está en la lista de software aprobado por IT?
+                            </div>
+                            <div class="flow-branch">
+                                <div class="flow-node bg-green-500 text-white">
+                                    SÍ
+                                </div>
+                                <div class="flow-node bg-red-500 text-white">
+                                    NO
+                                </div>
+                            </div>
+                            <div class="w-full flex justify-between px-10 relative" style="margin-top: -1.5rem;">
+                                <div class="flow-line bg-green-500 h-8"></div>
+                                <div class="flow-line bg-red-500 h-8"></div>
+                            </div>
+                            <div class="w-full flex justify-between px-10 relative">
+                                <div class="flow-arrow border-top-color-green-500" style="margin-top: 0; border-top-color: #22c55e;"></div>
+                                <div class="flow-arrow border-top-color-red-500" style="margin-top: 0; border-top-color: #ef4444;"></div>
+                            </div>
+                            <div class="flow-branch" style="justify-content: space-around;">
+                                <div class="flow-node bg-green-100 border border-green-500">
+                                    ¡Adelante!
+                                </div>
+                                <div class="flow-node bg-red-100 border border-red-500">
+                                    No lo instales.
+                                </div>
+                            </div>
+                            <div class="w-full flex justify-end px-10 relative" style="margin-top: -1.5rem;">
+                                <div class="flow-line bg-red-500 h-8"></div>
+                            </div>
+                            <div class="w-full flex justify-end px-10 relative">
+                                <div class="flow-arrow border-top-color-red-500" style="margin-top: 0; border-top-color: #ef4444;"></div>
+                            </div>
+                            <div class="flow-node bg-[#D55E00] text-white" style="margin-top: -2rem;">
+                                Solicita la aprobación a IT.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Manejo de Datos Sensibles</h4>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-4xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-lg">Almacena diseños CAD y documentos en la carpeta de red designada.</p>
+                                <p class="text-sm text-gray-500">El espacio de red es seguro, respaldado y auditable.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-4xl text-red-600">❌</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-lg">No guardes archivos en el escritorio, USB o servicios personales.</p>
+                                <p class="text-sm text-gray-500">Riesgo de pérdida, robo o fuga de información confidencial.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h5 class="text-lg font-bold text-[#00446A] mb-2">Directrices de Uso:</h5>
+                            <ul class="list-disc list-inside text-sm space-y-2">
+                                <li>Evita la navegación en sitios de alto riesgo.</li>
+                                <li>No uses equipos de la empresa para banca en línea o actividades personales sensibles.</li>
+                                <li>Sigue las reglas de uso de redes sociales para proteger la imagen de la empresa.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="./Examen_modulo3.html" target="_blank" rel="noopener noreferrer">
+                    <div id="cardFinalExam" class="card p-6 text-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4">Evaluación y Compromiso</h4>
+                        <p class="text-lg mb-4">La finalización de este módulo requiere la aprobación de un examen corto y la firma obligatoria del documento de Política de Uso Aceptable (MC211-IT-2).</p>
+                        <div class="flex justify-center space-x-6">
+                            <div class="text-4xl text-[#009E73]">📋</div>
+                            <div class="text-4xl text-[#0072B2]">✍️</div>
+                        </div>
+                    </div>
+                </a>
+            </section>
+
+        </main>
+        
+        <footer class="text-center py-6 mt-12 bg-blue-900">
+            <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
+                <p class="text-gray-100">Estratégia de Seguridad de la Información &copy; 2025 - Developed by Germán C. Montalbetti for</p>
+                <img src='../images/logo01-bco.png' title="Logo Prodismo" width="140" height="38">
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="../js/scripts.js"></script>
+
+    </body>
+</html>
