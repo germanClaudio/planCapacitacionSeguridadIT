@@ -15,12 +15,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     </head>
 <body class="text-gray-800">
 
     <header class="bg-white shadow-md sticky top-0 z-10">
         <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <img src="../images/ProdismoFirma.jpg" alt="Logo Prodismo" width="200" height="40">
+            <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
             
             <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
                 Seguridad de la Información: Un Compromiso Estratégico
@@ -48,13 +50,13 @@
 
         <section id="modulo1-detalle" class="mt-16">
             <h3 class="section-title">Módulo 1: Campaña de Rotación de Contraseñas</h3>
-            <p class="section-subtitle">Este módulo se centra en el pilar más importante de la seguridad personal: las credenciales de acceso. Su objetivo es establecer un proceso robusto de cambio de contraseñas y la implementación de Autenticación Multifactor (MFA).</p>
+            <p class="section-subtitle">Este módulo se centra en el pilar más importante de la seguridad personal: <strong>credenciales de acceso</strong>. Su objetivo es establecer un proceso robusto de cambio de contraseñas y la implementación de Autenticación Multifactor (MFA).</p>
 
             <div class="card p-6 mb-12">
-                <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Campaña de Rotación de Contraseñas (Cuentas MS 365/Teams)</h4>
+                <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Campaña de Rotación de Contraseñas (Cuentas MS365/Teams)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
                     <div>
-                        <a href="../files_output/MC413-IT-4 Política de Contraseñas Seguras.pdf" title="Desrcargar archivo pdf" target="_blank">
+                        <a href="../files_output/MC413-IT-4 Política de Contraseñas Seguras.pdf" title="Desrcargar MC413-IT-4 Política de Contraseñas Seguras.pdf" target="_blank">
                             <div class="text-4xl text-center text-[#0072B2] mb-2">🪪</div>
                             <h5 class="font-bold text-center">Política de Contraseñas de la Empresa</h5>
                         </a>
@@ -89,7 +91,7 @@
                     <div class="flex items-center space-x-4">
                         <span class="text-4xl">✅</span>
                         <div class="flex-grow">
-                            <p class="font-mono text-lg bg-green-100 p-2 rounded-lg">MeGustaElAsado$LosDomingos!</p>
+                            <p class="font-mono text-lg bg-green-100 p-2 rounded-lg">MeGustaE1Asado$LosDomingos!</p>
                             <p class="text-sm text-gray-500">Es una frase larga, única y memorable que es significativamente más segura.</p>
                         </div>
                     </div>
@@ -99,19 +101,19 @@
             <div class="card p-6 mb-12">
                 <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Guía del Módulo</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div>
+                    <div title="Ver el video">
                         <a href="https://youtu.be/d0La0v5wOYI" target="_blank">
                             <div class="text-4xl text-center text-[#0072B2] mb-2">🎬</div>
                             <h5 class="font-bold text-center">Video Instructivo</h5>
                             <p class="text-center text-sm">Video corto y conciso que muestra porque es importante el cambio de contraseña periódico.</p>
                         </a>
                     </div>
-                    <div>
+                    <div id="guia-pdf-modulo-uno" title="Descargar Instructivo_MS_Authenticator_MS_Teams_Rev00.pdff">
                         <div class="text-4xl text-center text-[#009E73] mb-2">📄</div>
                         <h5 class="font-bold text-center">Guía PDF</h5>
                         <p class="text-center text-sm">Material de apoyo para seguir el proceso en cualquier momento.</p>
                     </div>
-                    <div>
+                    <div id="emailSupportIcon" title="Haz clic aquí para ver los contactos">
                         <div class="text-4xl text-center text-[#D55E00] mb-2">📧</div>
                         <h5 class="font-bold text-center">Emails y Soporte</h5>
                         <p class="text-center text-sm">Recordatorios y soporte ampliado para resolver cualquier duda.</p>
@@ -121,7 +123,7 @@
 
             <div class="card p-6">
                 <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">La Importancia de la Autenticación Multifactor (MFA)</h4>
-                <p class="text-lg text-center mb-6">El MFA es una <strong>capa de seguridad crítica</strong> que hace a nuestras cuentas casi inmunes a ataques de <strong>password spraying</strong> y robo de credenciales. Es una medida clave para cumplir con los estándares de TISAX® e ISO 27001.</p>
+                <p class="text-lg text-center mb-6">El <strong>MFA</strong> es una <strong>capa de seguridad crítica</strong> que hace a nuestras cuentas casi inmunes a ataques de <strong>password spraying</strong> y robo de credenciales. Es una medida clave para cumplir con los estándares de <strong>TISAX®</strong> e <strong>ISO/IEC27001</strong>.</p>
                 <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
                     <div class="text-center">
                         <div class="text-4xl mb-2">🚫</div>
@@ -132,8 +134,11 @@
                     <div class="text-center">
                         <div class="text-4xl mb-2">✅</div>
                         <h5 class="font-bold text-green-600">Con MFA</h5>
-                        <p class="text-sm">Aunque la contraseña sea robada, el atacante no podrá acceder sin el segundo factor (ej. código del celular).</p>
+                        <p class="text-sm">Aunque la contraseña sea robada, el atacante no podrá acceder sin el segundo factor<br>(ej. código del teléfono celular).</p>
                     </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center justify-center my-5 space-y-4 md:space-y-0 md:space-x-8">
+                    <img src="../images/img_mfa.png" alt="MFA" title="Multi-Factor Authenticator">
                 </div>
             </div>
         </section>

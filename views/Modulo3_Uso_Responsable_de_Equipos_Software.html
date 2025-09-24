@@ -14,27 +14,32 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     </head>
 
     <body class="text-gray-800">
 
         <header class="bg-white shadow-md sticky top-0 z-10">
             <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-                <img src="../images/ProdismoFirma.jpg" alt="Logo Prodismo" width="200" height="40">
+                <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
                 
                 <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
                     Seguridad de la Información: Un Compromiso Estratégico
                 </h1>
 
-                <a href="./Modulo2_Ciberseguridad.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 mr-4"
+                <a href="./Modulo2_Ciberseguridad.html" id="btnPreviusPage" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 mr-4"
                     title="Ir al módulo 2 - Ciberseguridad">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 
-                <a href="./Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
-                    title="Ir al módulo 4 - Escritorio Remoto AnyDesk VPN Accesos Seguros">
+                <a href="#footer-section" id="btnNextPageModulo3" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
+                    title="Ir a realizar el examen">
                     <i class="fas fa-arrow-right"></i>
                 </a>
+                <!-- ./Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html -->
             </div>
         </header>
 
@@ -81,6 +86,7 @@
                 </section>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- instalar software -->
                     <div class="card flex flex-col items-center">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">¿Puedo instalar este software? Un flujograma de decisión.</h4>
                         <div class="flow-container">
@@ -127,6 +133,124 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- BYOD -->
+                    <div class="card flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Política de <b>B</b>ring <b>Y</b>our <b>O</b>wn <b>D</b>ivice</h4>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Conéctate solo a la red Wi-Fi de invitados de la empresa o a la VPN.</p>
+                                <p class="text-sm text-gray-500">Mantienes la red corporativa y tus datos personales aislados y seguros.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Utiliza una contraseña o PIN de acceso en tu dispositivo personal.</p>
+                                <p class="text-sm text-gray-500">Es una capa de seguridad básica pero crucial ante robos o pérdidas.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-red-600">❌</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">No almacenes datos confidenciales de la empresa en tu dispositivo personal.</p>
+                                <p class="text-sm text-gray-500">Esto previene la fuga de información sensible fuera de la red corporativa.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h5 class="text-lg font-bold text-[#00446A] mb-2">Directrices Adicionales:</h5>
+                            <ul class="list-disc list-inside text-sm space-y-2">
+                                <li>Mantén actualizado el sistema operativo de tu dispositivo y el software antivirus.</li>
+                                <li>Informa inmediatamente a TI si tu dispositivo personal se pierde o es robado.</li>
+                                <li>No compartas tu contraseña corporativa con nadie, ni la utilices para servicios personales.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Navegación Web -->
+                    <div class="card flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Navegación Web Segura</h4>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Verifica que el sitio web use HTTPS antes de ingresar datos.</p>
+                                <p class="text-sm text-gray-500">El candado cerrado en la barra de direcciones indica que la conexión es segura y cifrada.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Utiliza navegadores actualizados y los complementos de seguridad recomendados.</p>
+                                <p class="text-sm text-gray-500">Las versiones recientes corrigen vulnerabilidades, y las extensiones pueden bloquear amenazas.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-red-600">❌</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">No descargues archivos de sitios no confiables.</p>
+                                <p class="text-sm text-gray-500">Pueden contener malware, spyware o virus que comprometan tu equipo y la red.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-3xl text-red-600">❌</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">No accedas a enlaces sospechosos o acortados sin verificar su destino real.</p>
+                                <p class="text-sm text-gray-500">Pueden llevar a sitios de phishing diseñados para robar tu información.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h5 class="text-lg font-bold text-[#00446A] mb-1">Consejos de Seguridad Adicionales:</h5>
+                            <ul class="list-disc list-inside text-sm space-y-2">
+                                <li>Evita usar la red corporativa para actividades de alto riesgo como descargas de torrents o sitios de streaming no autorizados.</li>
+                                <li>No guardes contraseñas en el navegador, especialmente las de servicios corporativos.</li>
+                                <li>Ten cuidado con las ventanas emergentes que solicitan información o prometen premios. Ciérralas de inmediato.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Redes Sociales -->
+                    <div class="card flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Política de Redes Sociales</h4>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-2xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Protege la confidencialidad de la empresa. No compartas información sensible o no pública.</p>
+                                <p class="text-sm text-gray-500">Esto incluye datos de proyectos, planes estratégicos o detalles de clientes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-2xl text-green-600">✅</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Sé profesional y respetuoso en tus interacciones en línea.</p>
+                                <p class="text-sm text-gray-500">Mantén una conducta que no dañe la reputación de la empresa o la tuya.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-2xl text-red-600">❌</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">No uses el nombre de la empresa sin autorización en perfiles personales.</p>
+                                <p class="text-sm text-gray-500">Puede generar confusiones sobre si estás hablando a título personal o corporativo.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-2xl text-red-600">❌</span>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-m">Evita aceptar solicitudes de conexión de extraños que afirmen ser de la empresa.</p>
+                                <p class="text-sm text-gray-500">Pueden ser perfiles falsos que intentan obtener acceso a tu información y a la red de contactos.</p>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h5 class="text-lg font-bold text-[#00446A] mb-2">Consejos de Seguridad Adicionales:</h5>
+                            <ul class="list-disc list-inside text-sm space-y-2">
+                                <li>Revisa y ajusta la configuración de privacidad de tus perfiles en redes sociales.</li>
+                                <li>Ten cuidado al hacer clic en enlaces o anuncios. Pueden ser malware o phishing.</li>
+                                <li>Si ves un comentario o publicación maliciosa sobre la empresa, no respondas. Repórtalo a tu supervisor.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Manejo de Datos Sensibles -->
                     <div class="card flex flex-col justify-center">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Manejo de Datos Sensibles</h4>
                         <div class="flex items-center space-x-4 mb-4">
@@ -136,7 +260,7 @@
                                 <p class="text-sm text-gray-500">El espacio de red es seguro, respaldado y auditable.</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-4 mb-4">
                             <span class="text-4xl text-red-600">❌</span>
                             <div class="flex-grow">
                                 <p class="font-semibold text-lg">No guardes archivos en el escritorio, USB o servicios personales.</p>
@@ -168,7 +292,7 @@
 
         </main>
         
-        <footer class="text-center py-6 mt-12 bg-blue-900">
+        <footer id="footer-section" class="text-center py-6 mt-12 bg-blue-900">
             <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
                 <p class="text-gray-100">Estratégia de Seguridad de la Información &copy; 2025 - Developed by Germán C. Montalbetti for</p>
                 <img src='../images/logo01-bco.png' title="Logo Prodismo" width="140" height="38">

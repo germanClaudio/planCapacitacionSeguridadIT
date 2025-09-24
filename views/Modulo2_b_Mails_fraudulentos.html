@@ -14,13 +14,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     </head>
 
     <body class="text-gray-800">
 
         <header class="bg-white shadow-md sticky top-0 z-10">
             <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-                <img src="../images/ProdismoFirma.jpg" alt="Logo Prodismo" width="200" height="40">
+                <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
                 
                 <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
                     Seguridad de la Información: Un Compromiso Estratégico
@@ -45,9 +47,9 @@
                 <p class="text-xl md:text-2xl text-[#0072B2] font-semibold">Es un habilitador clave para la competitividad y la confianza del cliente.</p>
             </section>
 
-            <section id="modulo2-detalle" class="mt-16">
+            <section id="modulo2-detalle" class="mt-16 mb-16 pb-16">
                 <h3 class="section-title">¿Puedes Identificar el Phishing?</h3>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-12">A continuación se muestran 5 correos electrónicos. ¡Averigua cuáles son legítimos y cuáles son intentos de phishing!</p>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-12">A continuación se muestran 6 correos electrónicos. ¡Averigua cuáles son legítimos y cuáles son intentos de phishing!</p>
 
                 <section id="estandares" class="mb-16">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -55,105 +57,99 @@
                             <h4 class="text-2xl font-bold text-[#00446A] mb-3">Correo 1: Notificación de Paquete</h4>
                             <p class="mb-4 flex-grow">De: soporte@dhl-entrega.com</p>
                             <p class="mb-4 flex-grow">Asunto: ¡Problema con la entrega de su paquete DHL #789456123!</p>
-
                             <p class="mb-4 flex-grow">Hola Cliente,<br>
-
                                 Nuestro repartidor intentó entregar su paquete hoy pero no había nadie en la dirección proporcionada. Para reprogramar la entrega, debe confirmar sus datos en el siguiente enlace y pagar una tarifa de reprogramación de US$2.99.<br>
-                                
-                                Haga clic aquí para gestionar su entrega: <a class="" href="http://dhl-entregas.confirmar-datos.com/paquete789">Link para gestionar paquetería</a><br>
-                                
+                                Haga clic aquí para gestionar su entrega: <a href="http://dhl-entregas.confirmar-datos.com/paquete789">Link para gestionar paquetería</a><br>
                                 Atentamente,<br>
-                                El equipo de DHL</p>
-                            
+                                El equipo de DHL
+                            </p>
                             <div class="grid grid-cols-2 gap-4 text-center font-semibold">
-                                <div class="p-3 bg-[#009e73] text-white rounded-lg">Legítimo</div>
-                                <div class="p-3 bg-[#d55e00] text-white rounded-lg">Fraude</div>
+                                <button class="p-3 bg-[#009e73] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="false">Legítimo</button>
+                                <button class="p-3 bg-[#d55e00] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="true">Fraude</button>
                             </div>
                         </div>
-
+                
                         <div class="card flex flex-col">
                             <h4 class="text-2xl font-bold text-[#00446A] mb-3">Correo 2: Actualización de Seguridad de Google</h4>
                             <p class="mb-4 flex-grow">De: security-noreply@google.com</p>
                             <p class="mb-4 flex-grow">Asunto: Actividad de inicio de sesión inusual en tu cuenta de Google</p>
-
                             <p class="mb-4 flex-grow">Hola,<br>
-
                                 Detectamos un nuevo inicio de sesión en tu cuenta de Google desde un dispositivo Windows en Madrid, España (IP: 85.245.39.112). Si fuiste tú, ignora este mensaje.<br>
-                                
                                 Si no reconoces esta actividad, revisa la actividad sospechosa inmediatamente aquí: https://myaccount.google.com/security-checkup<br>
-                                
                                 Gracias,<br>
                                 El equipo de Seguridad de Google
-                            
+                            </p>
                             <div class="grid grid-cols-2 gap-4 text-center font-semibold">
-                                <div class="p-3 bg-[#009e73] text-white rounded-lg">Legítimo</div>
-                                <div class="p-3 bg-[#d55e00] text-white rounded-lg">Fraude</div>
+                                <button class="p-3 bg-[#009e73] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="true">Legítimo</button>
+                                <button class="p-3 bg-[#d55e00] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="false">Fraude</button>
                             </div>
                         </div>
-
+                
                         <div class="card flex flex-col">
                             <h4 class="text-2xl font-bold text-[#00446A] mb-3">Correo 3: Tu Factura de Netflix</h4>
                             <p class="mb-4 flex-grow">De: info@mail.netflix.com</p>
                             <p class="mb-4 flex-grow">Asunto: Tu factura de Netflix de octubre ya está disponible</p>
-
                             <p class="mb-4 flex-grow">Hola usuario Pedro,<br>
-
                                 Tu factura de Netflix por U$S12,99 ya está disponible. Este cargo aparecerá en tu método de pago en los próximos días como "NETFLIX.COM".<br>
-                                
                                 Para ver o descargar tu factura, inicia sesión en tu cuenta y ve a la sección "Facturación".<br>
-                                
                                 No respondas a este correo, ya que no supervisamos esta bandeja de entrada. Para ayuda, visita el Centro de Ayuda.<br>
-                                
                                 Gracias por ser miembro de Netflix.<br>
                                 El equipo de Netflix
-                            
+                            </p>
                             <div class="grid grid-cols-2 gap-4 text-center font-semibold">
-                                <div class="p-3 bg-[#009e73] text-white rounded-lg">Legítimo</div>
-                                <div class="p-3 bg-[#d55e00] text-white rounded-lg">Fraude</div>
+                                <button class="p-3 bg-[#009e73] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="true">Legítimo</button>
+                                <button class="p-3 bg-[#d55e00] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="false">Fraude</button>
                             </div>
                         </div>
-
+                
                         <div class="card flex flex-col">
                             <h4 class="text-2xl font-bold text-[#00446A] mb-3">Correo 4: Tu Cuenta de Microsoft ha sido Bloqueada</h4>
                             <p class="mb-4 flex-grow">De: Microsoft Account Team account-security@microsoft-support.org</p>
                             <p class="mb-4 flex-grow">Asunto: ACCIÓN REQUERIDA: Su cuenta ha sido bloqueada por seguridad</p>
-
                             <p class="mb-4 flex-grow">Estimado usuario de Microsoft,<br>
-
                                 Hemos detectado múltiples intentos fallidos de inicio de sesión en su cuenta. Por su seguridad, hemos bloqueado el acceso temporalmente.<br>
-                                
                                 Para desbloquear su cuenta, debe verificar su identidad de inmediato haciendo clic en el enlace a continuación y siguiendo las instrucciones:<br>
-                                
                                 Verificar Identidad: http://secure-microsoft-account.verification-portal.com/restore<br>
-                                
                                 Si no completa este proceso en las próximas 24 horas, su cuenta será suspendida permanentemente.<br>
-                                
                                 Atentamente,<br>
-                                El equipo de cuentas de Microsoft</p>
-                            
+                                El equipo de cuentas de Microsoft
+                            </p>
                             <div class="grid grid-cols-2 gap-4 text-center font-semibold">
-                                <div class="p-3 bg-[#009e73] text-white rounded-lg">Legítimo</div>
-                                <div class="p-3 bg-[#d55e00] text-white rounded-lg">Fraude</div>
+                                <button class="p-3 bg-[#009e73] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="false">Legítimo</button>
+                                <button class="p-3 bg-[#d55e00] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="true">Fraude</button>
                             </div>
                         </div>
-
+                        
                         <div class="card flex flex-col">
                             <h4 class="text-2xl font-bold text-[#00446A] mb-3">Correo 5: Confirmación de Cambio de Contraseña</h4>
                             <p class="mb-4 flex-grow">De: X no-reply@x.com</p>
                             <p class="mb-4 flex-grow">Asunto: ¿Has sido tú? Se ha cambiado la contraseña de tu cuenta</p>
-
                             <p class="mb-4 flex-grow">Hola,<br>
-
                                 Recientemente se ha cambiado la contraseña de tu cuenta de X asociada a hsimpson@gmail.com. Si fuiste tú, no necesitas hacer nada.<br>
-                                
                                 Si no autorizaste este cambio, protege tu cuenta ahora restableciendo tu contraseña inmediatamente: https://x.com/account/begin_password_reset<br>
-                                
                                 Gracias,<br>
-                                El equipo de X</p>
-                            
+                                El equipo de X
+                            </p>
                             <div class="grid grid-cols-2 gap-4 text-center font-semibold">
-                                <div class="p-3 bg-[#009e73] text-white rounded-lg">Legítimo</div>
-                                <div class="p-3 bg-[#d55e00] text-white rounded-lg">Fraude</div>
+                                <button class="p-3 bg-[#009e73] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="true">Legítimo</button>
+                                <button class="p-3 bg-[#d55e00] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="false">Fraude</button>
+                            </div>
+                        </div>
+                
+                        <div class="card flex flex-col">
+                            <h4 class="text-2xl font-bold text-[#00446A] mb-3">Correo 6: Verificación de acceso a la red</h4>
+                            <p class="mb-4 flex-grow">De: itprodismo@pr0dismo.com</p>
+                            <p class="mb-4 flex-grow">Asunto: Verificación de Credenciales de Acceso a la Red</p>
+                            <p class="mb-4 flex-grow">Estimado usuario,<br>
+                                Nuestro equipo de TI está realizando una actualización de seguridad en la red de la empresa. Para garantizar que su acceso no se vea interrumpido, por favor ingrese sus credenciales de red a través del siguiente enlace.<br>
+                                Haga clic aquí: <a href="http://portal-de-seguridad-prodism0.com/verificar">Verificar Credenciales</a><br>
+                                Tenga en cuenta que si no completa este paso en las próximas 4 horas, su acceso será bloqueado temporalmente.<br>
+                                Atentamente,<br>
+                                Soporte de TI
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 text-center font-semibold">
+                                <button class="p-3 bg-[#009e73] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="false">Legítimo</button>
+                                <button class="p-3 bg-[#d55e00] text-white rounded-lg check-button transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95 shadow-lg shadow-[rgba(0,0,0,0.2)] hover:shadow-xl hover:shadow-[rgba(0,0,0,0.3)]" data-correct="true">Fraude</button>
                             </div>
                         </div>
                     </div>
@@ -161,9 +157,9 @@
 
             </section>
 
-            <section class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-blue-800 mb-4">¿Puedes Identificar el Phishing?</h1>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto">A continuación se muestran las respuestas. ¡Averiguaste cuáles eran legítimos y cuáles son intentos de phishing!</p>
+            <section class="text-center mb-12 mt-12 pt-16">
+                <h1 class="text-4xl font-bold text-blue-800 mb-4">¿Puediste Identificar el Phishing?</h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto">A continuación se muestran las respuestas correctas y sus pistas. ¡Averiguaste cuáles eran legítimos y cuáles son intentos de phishing!</p>
             </section>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -200,7 +196,6 @@
                         </div>
                     </div>
 
-
                     <!-- Correo 5 -->
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-green-500">
                         <div class="p-6">
@@ -214,9 +209,7 @@
                                 <li>Opción clara: Te informa de un cambio y te da instrucciones claras solo si no lo autorizaste.</li>
                             </ul>
                         </div>
-                    </div>
-
-                    
+                    </div>                    
                 </div>
 
                 <!-- Columna 2 -->
@@ -251,21 +244,37 @@
                         </div>
                     </div>
 
-                    <!-- Resumen educativo -->
-                    <div class="bg-blue-50 rounded-xl shadow-lg overflow-hidden border-l-4 border-blue-500">
+                    <!-- Correo 6 -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden border-l-4 border-red-500">
                         <div class="p-6">
                             <div class="flex items-center mb-4">
-                                <div class="text-3xl mr-3 text-blue-500"><i class="fas fa-lightbulb"></i></div>
-                                <h3 class="text-xl font-bold text-blue-700">Consejos para identificar Phishing</h3>
+                                <div class="text-3xl mr-3 text-red-500"><i class="fas fa-times-circle"></i></div>
+                                <h3 class="text-xl font-bold text-red-600">6. Correo de IT Prodismo: PHISHING</h3>
                             </div>
                             <ul class="list-disc list-inside space-y-2 text-gray-700 text-left pl-5">
-                                <li>Verifica siempre la dirección de correo del remitente, no solo el nombre.</li>
-                                <li>Pasa el cursor por encima de los enlaces para ver la URL real antes de hacer clic.</li>
-                                <li>Las empresas legítimas nunca te pedirán que verifiques contraseñas o datos bancarios por correo.</li>
-                                <li>Ante la duda, no hagas clic. Accede directamente a la web o app oficial.</li>
+                                <li>Dirección del remitente: <span class="font-mono">itprodismo@pr0dismo.com</span> (El dominio pr0dismo.com es fraudulento, tiene un 0 en lugar de una o).</li>
+                                <li>Amenaza y urgencia extrema: Usa lenguaje alarmista para que actúes sin pensar.</li>
+                                <li>Enlace fraudulento: El enlace <span class="font-mono">http://portal-de-seguridad-prodism0.com/verificar/</span> es falso.</li>
                             </ul>
                         </div>
                     </div>
+                </div>
+                
+            </div>
+
+            <!-- Resumen educativo -->
+            <div class="flex items-center bg-blue-50 rounded-xl shadow-lg overflow-hidden border-l-4 border-blue-500 m-12">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="text-3xl mr-3 text-blue-500"><i class="fas fa-lightbulb"></i></div>
+                        <h3 class="text-xl font-bold text-blue-700">Consejos para identificar Phishing</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-left pl-5">
+                        <li>Verifica siempre la dirección de correo del remitente, no solo el nombre.</li>
+                        <li>Pasa el cursor por encima de los enlaces para ver la URL real antes de hacer clic.</li>
+                        <li>Las empresas legítimas nunca te pedirán que verifiques contraseñas o datos bancarios por correo.</li>
+                        <li>Ante la duda, no hagas clic. Accede directamente a la web o app oficial.</li>
+                    </ul>
                 </div>
             </div>
 

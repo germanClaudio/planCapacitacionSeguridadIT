@@ -14,13 +14,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     </head>
 
     <body class="text-gray-800">
 
         <header class="bg-white shadow-md sticky top-0 z-10">
             <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-                <img src="../images/ProdismoFirma.jpg" alt="Logo Prodismo" width="200" height="40">
+                <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
                 
                 <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
                     Seguridad de la Información: Un Compromiso Estratégico
@@ -38,22 +40,29 @@
                     <form id="quiz-form" class="space-y-4">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-                            <input type="text" id="name" name="name" autocomplete="on" required class="mt-1 block w-full border-gray-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="text" id="name" name="name" autocomplete="on" placeholder="Nombre/s" required class="mt-1 block w-full border-gray-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div>
                             <label for="surname" class="block text-sm font-medium text-gray-700">Apellido</label>
-                            <input type="text" id="surname" name="surname" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="text" id="surname" name="surname" placeholder="Apellido/s" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div>
                             <label for="employeeId" class="block text-sm font-medium text-gray-700">Número de Legajo</label>
-                            <input type="number" id="employeeId" name="employeeId" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="number" id="employeeId" placeholder="Número de lejajo" name="employeeId" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div>
                             <label for="corporateEmail" class="block text-sm font-medium text-gray-700">Mail Corporativo</label>
-                            <input type="email" id="corporateEmail" name="corporateEmail" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <input type="email" id="corporateEmail" placeholder="usuario@prodismo.com" name="corporateEmail" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div class="flex justify-center mt-6">
-                            <button type="submit" class="btn btn-primary w-full">Comenzar Examen</button>
+                            <button type="button" id="btnSubmitForm" class="btn btn-primary w-full">Comenzar Examen</button>
+                        </div>
+                        <!-- Nuevo botón para usuarios que ya aprobaron -->
+                        <div class="flex justify-center mt-4">
+                            <button type="button" id="btnYaAprobado" class="btn btn-success-modulo4 w-full text-white">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                He realizado el examen y tengo un código de acceso
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -69,6 +78,7 @@
                     <div class="flex justify-between mt-8">
                         <button id="prev-btn" class="btn btn-secondary" style="display: none;">Anterior</button>
                         <button id="next-btn" class="btn btn-primary ml-auto" style="display: none;">Siguiente</button>
+                        <button id="showResultsBtn" class="hidden">Ver resultados</button>
                     </div>
                 </div>
     
