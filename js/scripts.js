@@ -1591,14 +1591,13 @@ function verificarAccesoPrevio() {
 
 // Ejecutar cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    // Verificar si ya se completó la verificación anteriormente
-    if (!verificarAccesoPrevio()) {
-        // Mostrar el modal después de un breve delay para que cargue la página
-        setTimeout(() => {
-            mostrarModalVerificacion();
-        }, 500);
+    if (document.body.getAttribute('data-requiere-verificacion') === 'true') {
+        if (!verificarAccesoPrevio()) {
+            setTimeout(() => {
+                mostrarModalVerificacion();
+            }, 500);
+        }
     }
-    // Si ya está verificado, la página se muestra normalmente
 });
 
 // Opcional: Función para resetear la verificación (útil para testing)
@@ -1614,105 +1613,107 @@ function resetearVerificacionModulo4() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtener la card de acuerdo Modelo por su ID
-    const acuerdoModelo = document.getElementById('acuerdoModelo');
-
-    if (acuerdoModelo) {
-        // Agregar evento de clic a la card
-        acuerdoModelo.addEventListener('click', function() {
-            // Verificar si ya fue descargado
-            const yaDescargado = localStorage.getItem('acuerdoModeloDescargada') === 'true';
-            
-            if (yaDescargado) {
-                // Mostrar alerta indicando que ya fue descargado
-                Swal.fire({
-                    icon: 'info',
-                    title: 'PDF Ya Descargado',
-                    html: 'El documento <strong>MC214-IT-1 Acuerdo Modelo de Teletrabajo</strong> ya ha sido descargado anteriormente.<br>',
-                    confirmButtonText: 'Entendido',
-                    confirmButtonColor: '#00446A',
-                    footer: 'Si necesitas otra copia, contacta al departamento de IT'
-                });
-                return;
-            }
-
-            // Crear un enlace temporal para descargar el PDF
-            const link = document.createElement('a');
-            link.href = '../files_output/MC214-IT-1 Acuerdo Modelo de Teletrabajo.pdf';
-            link.download = 'MC214-IT-1_Acuerdo_Modelo_Teletrabajo.pdf';
-            link.target = '_blank';
-            
-            // Agregar evento para detectar cuando la descarga se complete
-            link.addEventListener('click', function() {
-                // Marcar en localStorage que el PDF fue descargado
-                localStorage.setItem('acuerdoModeloDescargada', 'true');
-                
-                // Mostrar confirmación de descarga después de un breve delay
-                setTimeout(() => {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'PDF Descargado Exitosamente',
-                        html: 'El documento <strong>MC214-IT-1 Acuerdo Modelo de Teletrabajo</strong> ha sido descargado correctamente.',
-                        confirmButtonText: 'Continuar',
-                        confirmButtonColor: '#00446A'
-                    });
-                }, 1500);
-            });
-            
-            // Simular clic en el enlace
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Feedback visual
-            acuerdoModelo.style.backgroundColor = '#e6f0f7';
-            acuerdoModelo.style.transition = 'background-color 0.3s ease';
-            setTimeout(() => {
-                acuerdoModelo.style.backgroundColor = '';
-            }, 1000);
-        });
-    }
-
+    if (document.body.getAttribute('data-requiere-verificacion') === 'true') {
+        // Obtener la card de acuerdo Modelo por su ID
+        const acuerdoModelo = document.getElementById('acuerdoModelo');
     
-    const contactoIt = document.getElementById('contactoIt');
-    if (contactoIt) {
-        contactoIt.addEventListener('click', function() {
-            Swal.fire({
-                title: 'SOPORTE IT PRODISMO',
-                html: `
-                    <div class="text-left text-gray-700 leading-relaxed">
-                        <p class="mb-2">Para consultas relacionadas con IT y Seguridad, contacta a:</p>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>
-                                <strong>Mail IT:</strong> <a href="mailto:itprodismo@prodismo.com" class="text-blue-600 hover:underline">itprodismo@prodismo.com</a>
-                            </li>
-                            <li>
-                                <strong>Seguridad:</strong> <a href="mailto:eferrari@prodismo.com" class="text-blue-600 hover:underline">eferrari@prodismo.com</a>
-                            </li>
-                            <li>
-                            <strong>IT Manager:</strong> <a href="mailto:gmontalbetti@prodismo.com" class="text-blue-600 hover:underline">gmontalbetti@prodismo.com</a>
-                            </li>
-                            <li>
-                            <strong>Help Desk (STI):</strong> <a href="https://apps.powerapps.com/play/e/default-48f8f875-b75a-4037-a9d8-15d6bbd7c5f9/a/fce0c9bd-9de6-4890-b9ad-5d4f8e05b93f?tenantId=48f8f875-b75a-4037-a9d8-15d6bbd7c5f9&source=teamsopenwebsite&hint=0bdd9fd3-167c-40ea-ac48-d4e5868adbad&sourcetime=1716909981370#" class="text-blue-600"><img src="../images/HelpDesk_logo2.png" class="m-auto text- center"></a>
-                            </li>
-                        </ul>
-                        <p class="mt-4 text-sm text-gray-600">Estamos aquí para ayudarte a resolver cualquier duda.</p>
-                    </div>
-                `,
-                imageUrl: "../images/ITProdimo_logo.png",
-                showCloseButton: true, // Muestra el botón de cerrar (la "X")
-                showConfirmButton: true, // Muestra el botón de "OK"
-                confirmButtonText: 'Entendido',
-                confirmButtonColor: '#08089d', // Color del botón de confirmación
-                allowOutsideClick: false, // No se puede cerrar haciendo clic fuera del modal
-                customClass: {
-                    popup: 'rounded-lg shadow-xl', // Clases de Tailwind para el estilo del popup
-                    title: 'text-2xl font-bold text-gray-800',
-                    htmlContainer: 'text-base',
-                },
-                width: '500px', // Ancho del modal, para que no ocupe toda la pantalla
+        if (acuerdoModelo) {
+            // Agregar evento de clic a la card
+            acuerdoModelo.addEventListener('click', function() {
+                // Verificar si ya fue descargado
+                const yaDescargado = localStorage.getItem('acuerdoModeloDescargada') === 'true';
+                
+                if (yaDescargado) {
+                    // Mostrar alerta indicando que ya fue descargado
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'PDF Ya Descargado',
+                        html: 'El documento <strong>MC214-IT-1 Acuerdo Modelo de Teletrabajo</strong> ya ha sido descargado anteriormente.<br>',
+                        confirmButtonText: 'Entendido',
+                        confirmButtonColor: '#00446A',
+                        footer: 'Si necesitas otra copia, contacta al departamento de IT'
+                    });
+                    return;
+                }
+    
+                // Crear un enlace temporal para descargar el PDF
+                const link = document.createElement('a');
+                link.href = '../files_output/MC214-IT-1 Acuerdo Modelo de Teletrabajo.pdf';
+                link.download = 'MC214-IT-1_Acuerdo_Modelo_Teletrabajo.pdf';
+                link.target = '_blank';
+                
+                // Agregar evento para detectar cuando la descarga se complete
+                link.addEventListener('click', function() {
+                    // Marcar en localStorage que el PDF fue descargado
+                    localStorage.setItem('acuerdoModeloDescargada', 'true');
+                    
+                    // Mostrar confirmación de descarga después de un breve delay
+                    setTimeout(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'PDF Descargado Exitosamente',
+                            html: 'El documento <strong>MC214-IT-1 Acuerdo Modelo de Teletrabajo</strong> ha sido descargado correctamente.',
+                            confirmButtonText: 'Continuar',
+                            confirmButtonColor: '#00446A'
+                        });
+                    }, 1500);
+                });
+                
+                // Simular clic en el enlace
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Feedback visual
+                acuerdoModelo.style.backgroundColor = '#e6f0f7';
+                acuerdoModelo.style.transition = 'background-color 0.3s ease';
+                setTimeout(() => {
+                    acuerdoModelo.style.backgroundColor = '';
+                }, 1000);
             });
-        });
+        }
+    
+        
+        const contactoIt = document.getElementById('contactoIt');
+        if (contactoIt) {
+            contactoIt.addEventListener('click', function() {
+                Swal.fire({
+                    title: 'SOPORTE IT PRODISMO',
+                    html: `
+                        <div class="text-left text-gray-700 leading-relaxed">
+                            <p class="mb-2">Para consultas relacionadas con IT y Seguridad, contacta a:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>
+                                    <strong>Mail IT:</strong> <a href="mailto:itprodismo@prodismo.com" class="text-blue-600 hover:underline">itprodismo@prodismo.com</a>
+                                </li>
+                                <li>
+                                    <strong>Seguridad:</strong> <a href="mailto:eferrari@prodismo.com" class="text-blue-600 hover:underline">eferrari@prodismo.com</a>
+                                </li>
+                                <li>
+                                <strong>IT Manager:</strong> <a href="mailto:gmontalbetti@prodismo.com" class="text-blue-600 hover:underline">gmontalbetti@prodismo.com</a>
+                                </li>
+                                <li>
+                                <strong>Help Desk (STI):</strong> <a href="https://apps.powerapps.com/play/e/default-48f8f875-b75a-4037-a9d8-15d6bbd7c5f9/a/fce0c9bd-9de6-4890-b9ad-5d4f8e05b93f?tenantId=48f8f875-b75a-4037-a9d8-15d6bbd7c5f9&source=teamsopenwebsite&hint=0bdd9fd3-167c-40ea-ac48-d4e5868adbad&sourcetime=1716909981370#" class="text-blue-600"><img src="../images/HelpDesk_logo2.png" class="m-auto text- center"></a>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-600">Estamos aquí para ayudarte a resolver cualquier duda.</p>
+                        </div>
+                    `,
+                    imageUrl: "../images/ITProdimo_logo.png",
+                    showCloseButton: true, // Muestra el botón de cerrar (la "X")
+                    showConfirmButton: true, // Muestra el botón de "OK"
+                    confirmButtonText: 'Entendido',
+                    confirmButtonColor: '#08089d', // Color del botón de confirmación
+                    allowOutsideClick: false, // No se puede cerrar haciendo clic fuera del modal
+                    customClass: {
+                        popup: 'rounded-lg shadow-xl', // Clases de Tailwind para el estilo del popup
+                        title: 'text-2xl font-bold text-gray-800',
+                        htmlContainer: 'text-base',
+                    },
+                    width: '500px', // Ancho del modal, para que no ocupe toda la pantalla
+                });
+            });
+        }
     }
 });
 //---------------------- End Modulo 4 -------------------------------
