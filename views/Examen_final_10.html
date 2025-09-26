@@ -32,60 +32,61 @@
         </header>
 
         <div class="main-content">
-            <div id="quiz-container" class="container-quiz mx-auto" >
+            <div id="quiz-container-final" class="container-quiz mx-auto" >
                 <!-- Formulario Inicial -->
-                <div id="personal-form" class="space-y-6">
-                    <h1 class="text-3xl font-bold text-center text-gray-800">Examen de Uso Responsable de Equipos</h1>
+                <div id="personal-form-final" class="space-y-6">
+                    <h1 class="text-3xl font-bold text-center text-gray-800">Examen Final Seguridad de la Información</h1>
                     <p class="text-center text-gray-600">Por favor, complete sus datos personales para comenzar la evaluación.</p>
-                    <form id="quiz-form" class="space-y-4">
+                    <form id="quiz-form-final" class="space-y-4">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-                            <input type="text" id="name" name="name" autocomplete="on" required class="mt-1 block w-full border-gray-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <label for="nameFinal" class="block text-sm font-medium text-gray-700">Nombre</label>
+                            <input type="text" id="nameFinal" name="nameFinal" autocomplete="on" placeholder="Nombre/s" required class="mt-1 block w-full border-gray-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div>
-                            <label for="surname" class="block text-sm font-medium text-gray-700">Apellido</label>
-                            <input type="text" id="surname" name="surname" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <label for="surnameFinal" class="block text-sm font-medium text-gray-700">Apellido</label>
+                            <input type="text" id="surnameFinal" name="surnameFinal" placeholder="Apellido/s" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div>
-                            <label for="employeeId" class="block text-sm font-medium text-gray-700">Número de Legajo</label>
-                            <input type="number" id="employeeId" name="employeeId" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <label for="employeeIdFinal" class="block text-sm font-medium text-gray-700">Número de Legajo</label>
+                            <input type="number" id="employeeIdFinal" placeholder="Número de lejajo" name="employeeIdFinal" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div>
-                            <label for="corporateEmail" class="block text-sm font-medium text-gray-700">Mail Corporativo</label>
-                            <input type="email" id="corporateEmail" name="corporateEmail" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                            <label for="corporateEmailFinal" class="block text-sm font-medium text-gray-700">Mail Corporativo</label>
+                            <input type="email" id="corporateEmailFinal" placeholder="usuario@prodismo.com" name="corporateEmailFinal" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                         </div>
                         <div class="flex justify-center mt-6">
-                            <button type="submit" class="btn btn-primary w-full">Comenzar Examen</button>
+                            <button type="button" id="btnSubmitForm-final" class="btn btn-primary w-full">Comenzar Examen</button>
                         </div>
                     </form>
                 </div>
     
                 <!-- Contenedor del Examen (inicialmente oculto) -->
-                <div id="quiz-content" class="hidden">
+                <div id="quiz-content-final" class="hidden">
                     <div class="mb-6">
-                        <h2 id="question-text" class="text-xl font-semibold text-gray-800"></h2>
+                        <h2 id="question-text-final" class="text-xl font-semibold text-gray-800"></h2>
                     </div>
-                    <div id="options-container" class="space-y-2">
+                    <div id="options-container-final" class="space-y-2">
                         <!-- Las opciones se renderizarán aquí -->
                     </div>
                     <div class="flex justify-between mt-8">
-                        <button id="prev-btn" class="btn btn-secondary" style="display: none;">Anterior</button>
-                        <button id="next-btn" class="btn btn-primary ml-auto" style="display: none;">Siguiente</button>
+                        <button id="prev-btn-final" class="btn btn-secondary" style="display: none;">Anterior</button>
+                        <button id="next-btn-final" class="btn btn-primary ml-auto" style="display: none;">Siguiente</button>
+                        <button id="showResultsBtn-final" class="hidden">Ver resultados</button>
                     </div>
                 </div>
     
                 <!-- Contenedor de Resultados (inicialmente oculto) -->
-                <div id="results-container" class="hidden">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Resultado del Examen</h2>
+                <div id="results-container-final" class="hidden">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Resultado del Examen Final</h2>
                     <div class="text-gray-600 mb-6">
-                        <p>Hola, <span id="final-name" class="font-bold"></span>.</p>
-                        <p>Has completado el examen de Uso Responsable de Equipos.</p>
+                        <p>Hola, <span id="final-name-final" class="font-bold"></span>.</p>
+                        <p>Has completado el examen Final de Seguridad de la Información.</p>
                     </div>
                     <p class="text-xl font-semibold text-gray-700">Tu puntaje es:</p>
-                    <p id="score-display" class="result-score"></p>
-                    <p id="percentage-display" class="text-lg font-semibold text-gray-700 mt-2"></p>
+                    <p id="score-display-final" class="result-score"></p>
+                    <p id="percentage-display-final" class="text-lg font-semibold text-gray-700 mt-2"></p>
                     <div class="mt-8">
-                        <button id="download-pdf-btn" class="btn btn-primary">Descargar PDF</button>
+                        <button id="download-pdf-btn-final" class="btn btn-primary">Descargar PDF</button>
                 </div>
         </div>
             </div>

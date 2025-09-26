@@ -86,22 +86,22 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="card">
+                    <div class="card" id="contactoIt" title="Haz clic aquí">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Procedimiento de Reporte de Incidentes</h4>
                         <ul class="list-disc list-inside space-y-2">
-                            <li><strong>¿Qué es un incidente?</strong> Comportamiento raro de tu PC, un correo sospechoso, la pérdida de un celular corporativo, etc.</li>
+                            <li><strong>¿Qué es un incidente?</strong> Comportamiento raro de tu PC, un correo sospechoso, la pérdida de un dispositivo corporativo, etc.</li>
                             <li><strong>¿A quién llamo?</strong> Tu primera y única llamada es al equipo de soporte de IT.</li>
                             <li><strong>Canal Claro:</strong> El canal de reporte de incidentes será comunicado al inicio de la sesión.</li>
                         </ul>
                     </div>
-                    <div class="card">
+                    <div class="card" id="politica-minimo-privilegio" title="Haz clic aquí para descargar nuestra politica de minimo privilegio">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Instrucciones para Proveedores In-House</h4>
                         <p class="text-lg mb-4">Los proveedores que trabajan en nuestras instalaciones deben cumplir con las mismas políticas de confidencialidad y seguridad. Tienen acceso solo a lo que necesitan para su trabajo (Principio de Mínimo Privilegio).</p>
                         <div class="text-center text-4xl mt-4">🤝</div>
                     </div>
                 </div>
 
-                <div class="card p-6 text-center">
+                <div class="card p-6 text-center" id="identificaRiesgos" title="Identifica el Riesgo haciendo clic aquí">
                     <h4 class="text-xl font-bold text-[#00446A] mb-4">Ejemplo Práctico: Identifica el Riesgo</h4>
                     <p class="text-lg mb-4">En la sesión, analizaremos fotos de situaciones comunes para identificar riesgos de seguridad, como:</p>
                     <ul class="list-disc list-inside text-left mx-auto max-w-lg space-y-3">
@@ -110,9 +110,49 @@
                         <li><span class="text-1xl me-2">❌</span>La puerta del cuarto de servidores abierta.</li>
                     </ul>
                 </div>
+
+                <!-- Modal para identificar riesgos -->
+                <div id="riesgosModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                    <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        <div class="p-6">
+                            <!-- Header del modal -->
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold text-[#00446A]" id="modalTitle">Identifica el Riesgo</h3>
+                                <button id="closeModal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                            </div>
+                            
+                            <!-- Contenido de la situación -->
+                            <div id="modalContent">
+                                <img id="situacionImage" src="" alt="Situación de riesgo" class="w-full h-64 object-cover rounded-lg mb-4">
+                                <p id="situacionDesc" class="text-lg mb-4"></p>
+                                
+                                <!-- Contador de progreso -->
+                                <div class="mb-6">
+                                    <div class="flex justify-between text-sm text-gray-600 mb-2">
+                                        <span>Progreso:</span>
+                                        <span id="progresoTexto">Situación 1 de 7</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div id="progresoBarra" class="bg-[#00446A] h-2 rounded-full" style="width: 14%"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Botones de acción -->
+                                <div class="flex space-x-4 justify-center">
+                                    <button id="btnCorrecto" class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                                        ✅ Correcto
+                                    </button>
+                                    <button id="btnIncorrecto" class="bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                                        ❌ Incorrecto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="card p-6 mt-12 text-center bg-gray-100">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4">Evaluación Final</h4>
+                    <h4 class="text-xl font-bold text-[#00446A] mb-4">Preparate para la Evaluación Final</h4>
                     <p class="text-lg mb-2">Para aprobar la capacitación, deberás rendir y aprobar un examen final de 10 preguntas que cubra todos los módulos.</p>
                     <p class="text-2xl font-bold text-[#009E73]">Resultado Necesario: >80%</p>
                 </div>
