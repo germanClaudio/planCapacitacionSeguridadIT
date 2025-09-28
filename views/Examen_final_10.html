@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -33,7 +33,7 @@
 
         <div class="main-content">
             <div id="quiz-container-final" class="container-quiz mx-auto" >
-                <!-- Formulario Inicial -->
+                Formulario Inicial
                 <div id="personal-form-final" class="space-y-6">
                     <h1 class="text-3xl font-bold text-center text-gray-800">Examen Final Seguridad de la Información</h1>
                     <p class="text-center text-gray-600">Por favor, complete sus datos personales para comenzar la evaluación.</p>
@@ -60,13 +60,13 @@
                     </form>
                 </div>
     
-                <!-- Contenedor del Examen (inicialmente oculto) -->
+                Contenedor del Examen (inicialmente oculto)
                 <div id="quiz-content-final" class="hidden">
                     <div class="mb-6">
                         <h2 id="question-text-final" class="text-xl font-semibold text-gray-800"></h2>
                     </div>
                     <div id="options-container-final" class="space-y-2">
-                        <!-- Las opciones se renderizarán aquí -->
+                        Las opciones se renderizarán aquí
                     </div>
                     <div class="flex justify-between mt-8">
                         <button id="prev-btn-final" class="btn btn-secondary" style="display: none;">Anterior</button>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
     
-                <!-- Contenedor de Resultados (inicialmente oculto) -->
+                Contenedor de Resultados (inicialmente oculto)
                 <div id="results-container-final" class="hidden">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Resultado del Examen Final</h2>
                     <div class="text-gray-600 mb-6">
@@ -103,4 +103,169 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     </body>
-</html>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Prodismo">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="../images/Logo_Prodismo.ico">
+        <title>Seguridad de la Información como Compromiso Estratégico - Examen Final</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link href="../dist/output.css" rel="stylesheet">
+        <link rel="stylesheet"  type="text/css" href="../css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
+    </head>
+
+    <body class="text-gray-800 bg-gray-50">
+
+        <header class="bg-white shadow-md sticky top-0 z-10">
+            <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+                <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
+                
+                <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
+                    Seguridad de la Información: Un Compromiso Estratégico
+                </h1>
+                
+                <a href="../index.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
+                    title="Volver al Inicio">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div id="quiz-container-final" class="container-quiz mx-auto">
+                <!-- Formulario Inicial -->
+                <div id="personal-form-final" class="space-y-6">
+                    <div class="text-center mb-8">
+                        <h1 class="text-3xl md:text-4xl font-extrabold text-[#00446A] mb-4">Examen Final</h1>
+                    </div>
+                    
+                    <div class="card p-2 mb-6">
+                        <h2 class="text-xl font-bold text-[#00446A] mb-4">Instrucciones del examen</h2>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Complete sus datos personales para comenzar la evaluación</li>
+                            <li>El examen consta de 10 preguntas de opción múltiple seleccionadas aleatoriamente</li>
+                            <li>Debe obtener al menos 8 respuestas correctas para aprobar</li>
+                            <li>Una vez iniciado, podrá navegar entre preguntas pero no cambiar respuestas ya enviadas</li>
+                            <li>Al finalizar, recibirá un certificado de aprobación</li>
+                        </ul>
+                    </div>
+                    
+                    <form id="quiz-form-final" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="nameFinal" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                                <input type="text" id="nameFinal" name="nameFinal" autocomplete="on" placeholder="Nombre/s" required class="form-input">
+                            </div>
+                            <div>
+                                <label for="surnameFinal" class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
+                                <input type="text" id="surnameFinal" name="surnameFinal" placeholder="Apellido/s" required class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="employeeIdFinal" class="block text-sm font-medium text-gray-700 mb-1">Número de Legajo</label>
+                                <input type="number" id="employeeIdFinal" placeholder="Número de legajo" name="employeeIdFinal" required class="form-input" min="1" max="9999">
+                            </div>
+                            <div>
+                                <label for="corporateEmailFinal" class="block text-sm font-medium text-gray-700 mb-1">Mail Corporativo</label>
+                                <input type="email" id="corporateEmailFinal" placeholder="usuario@prodismo.com" name="corporateEmailFinal" required class="form-input">
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col md:flex-row gap-4 justify-center mt-6">
+                            <button type="button" id="btnSubmitForm-final" class="btn btn-primary">Comenzar Examen</button>
+                        </div>
+                    </form>
+                </div>
+    
+                <!-- Contenedor del Examen (inicialmente oculto) -->
+                <div id="quiz-content-final" class="hidden">
+                    <div class="question-counter">
+                        Pregunta <span id="current-question-final">1</span> de <span id="total-questions-final">10</span>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div id="progress-fill-final" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h2 id="question-text-final" class="text-xl font-semibold text-gray-800 mb-4"></h2>
+                        
+                        <div id="options-container-final" class="space-y-3">
+                            <!-- Las opciones se renderizarán aquí -->
+                        </div>
+                        
+                        <div class="flex justify-between mt-8">
+                            <button id="prev-btn-final" class="btn btn-secondary" style="display: none;">
+                                <i class="fas fa-arrow-left mr-2"></i>Anterior
+                            </button>
+                            <button id="next-btn-final" class="btn btn-primary ml-auto" style="display: none;">
+                                Siguiente <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                            <button id="showResultsBtn-final" class="btn btn-primary hidden">Finalizar Examen</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Contenedor de Resultados (inicialmente oculto) -->
+                <div id="results-container-final" class="hidden">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-[#00446A] mb-4">Resultado del Examen Final</h2>
+                        <div class="text-gray-600 mb-6">
+                            <p class="mb-2">Hola, <span id="final-name-final" class="font-bold text-[#00446A]"></span>.</p>
+                            <p>Has completado el Examen Final de Seguridad de la Información.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6 text-center">
+                        <p class="text-xl font-semibold text-gray-700">Tu puntaje es:</p>
+                        <p id="score-display-final" class="result-score"></p>
+                        <p id="percentage-display-final" class="text-lg font-semibold text-gray-700 mt-2 mb-4"></p>
+                        <p id="result-message-final" class="text-lg mb-6"></p>
+                        
+                        <div class="mt-8 mb-6">
+                            <button id="download-pdf-btn-final" class="btn btn-primary mr-4">
+                                <i class="fas fa-download mr-2"></i>Descargar Certificado
+                            </button>
+                            <button id="restart-btn-final" class="btn btn-secondary">
+                                <i class="fas fa-redo mr-2"></i>Reintentar Examen
+                            </button>
+                        </div>
+
+                        <!-- Sección de Encuesta -->
+                        <div class="mt-12 pt-8 border-t border-gray-200">
+                            <p class="text-lg font-medium text-gray-700 mb-4">
+                                Por favor, completa la encuesta de satisfacción.<br>No te llevará más de 1 minuto hacerla.
+                            </p>
+                            <div class="mt-8 mb-2">
+                                <button id="encuesta-btn-final" class="btn bg-indigo-500 hover:bg-indigo-600 text-white shadow hover:shadow-lg transition duration-200">
+                                    <i class="fa-solid fa-circle-question mr-2"></i>📝 Realizar encuesta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center py-6 mt-12 bg-blue-900">
+            <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
+                <p class="text-gray-100">Estratégia de Seguridad de la Información &copy; 2025 - Developed by Germán C. Montalbetti for</p>
+                <img src='../images/logo01-bco.png' title="Logo Prodismo" width="140" height="38">
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="../js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

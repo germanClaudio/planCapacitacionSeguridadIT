@@ -6,12 +6,12 @@
         <meta name="description" content="Prodismo">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="../images/Logo_Prodismo.ico">
-        <title>Seguridad de la Información como Compromiso Estratégico</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Seguridad de la Información como Compromiso Estratégico - Modulo 5</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link href="../dist/output.css" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
@@ -33,7 +33,7 @@
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 
-                <a href="Modulo6_Temas_adicionales.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
+                <a href="./Modulo6_Temas_adicionales.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
                     title="Ir al módulo 6 - Temas adicionales">
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -51,64 +51,131 @@
                 <h3 class="section-title">Módulo 5: Gestión de Riesgos y Buenas Prácticas Cotidianas</h3>
                 <p class="section-subtitle">Este módulo se enfoca en la gestión de riesgos y la aplicación de buenas prácticas de seguridad en el día a día para proteger nuestra información y la de la empresa.</p>
 
-                <div class="card p-6 text-center mb-8">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4">El Concepto de Riesgo</h4>
-                    <div class="bg-gray-100 p-6 rounded-lg">
-                        <p class="text-2xl font-extrabold text-[#00446A]">Riesgo = Amenaza &times; Vulnerabilidad</p>
+                <!-- Concepto de Riesgo -->
+                <div class="card p-8 text-center mb-12 risk-formula">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-6">El Concepto de Riesgo</h4>
+                    <div class="bg-white p-6 rounded-lg shadow-md inline-block">
+                        <p class="text-3xl font-extrabold text-[#00446A] mb-2">Riesgo = Amenaza × Vulnerabilidad</p>
+                        <p class="text-lg text-gray-600">Comprender este concepto nos ayuda a priorizar y actuar para proteger nuestros activos.</p>
                     </div>
-                    <p class="mt-4 text-sm text-gray-600">Comprender este concepto nos ayuda a priorizar y actuar para proteger nuestros activos.</p>
                 </div>
                 
+                <!-- Buenas Prácticas -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="card">
+                    <!-- Prácticas Físicas -->
+                    <div class="card flex flex-col">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Buenas Prácticas Físicas</h4>
-                        <ul class="list-disc list-inside space-y-4">
-                            <li><span class="font-bold">Escritorio Limpio:</span> No dejes documentos confidenciales impresos o en tu pantalla a la vista cuando te ausentes. </li>
-                            <li><span class="font-bold">Bloquea tu PC:</span> Acostúmbrate a bloquear tu sesión (`<i class="fa-brands fa-windows"></i> + L`) cada vez que te alejes de tu equipo.</li>
-                            <li><span class="font-bold">Reporta Visitantes:</span> Si ves a alguien desconocido en un área restringida, repórtalo a seguridad o a tu supervisor de inmediato.</li>
-                        </ul>
+                        <div class="space-y-4 mt-auto">
+                            <div class="flex items-start space-x-3">
+                                <div class="text-green-600 text-xl mt-1">✅</div>
+                                <div>
+                                    <p class="font-semibold">Escritorio Limpio:</p>
+                                    <p class="text-sm text-gray-600">No dejes documentos confidenciales impresos o en tu pantalla a la vista cuando te ausentes.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="text-green-600 text-xl mt-1">✅</div>
+                                <div>
+                                    <p class="font-semibold">Bloquea tu PC:</p>
+                                    <p class="text-sm text-gray-600">Acostúmbrate a bloquear tu sesión (<kbd class="px-2 py-1 bg-gray-200 rounded">Windows + L</kbd>) cada vez que te alejes de tu equipo.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="text-green-600 text-xl mt-1">✅</div>
+                                <div>
+                                    <p class="font-semibold">Reporta Visitantes:</p>
+                                    <p class="text-sm text-gray-600">Si ves a alguien desconocido en un área restringida, repórtalo inmediatamente.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
+
+                    <!-- Ingeniería Social -->
+                    <div class="card flex flex-col">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">El Peligro de la Ingeniería Social</h4>
-                        <p class="text-lg mb-4">Los atacantes buscan manipularnos psicológicamente para que revelemos información o les demos acceso. Un ejemplo común es la llamada falsa de "soporte técnico" pidiendo tu contraseña. </p>
-                        <p class="text-sm text-gray-600"><strong>Recuerda:</strong> IT nunca te pedirá tu contraseña. Si dudas, cuelga y llama al número de soporte oficial.</p>
-                        <div class="text-center mt-4 text-5xl">📞</div>
+                        <p class="text-lg mb-4">Los atacantes buscan manipularnos psicológicamente para que revelemos información o les demos acceso.</p>
+                        
+                        <div class="bg-red-50 p-4 rounded-lg border border-red-200 mt-auto">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <div class="text-red-600 text-3xl">📞</div>
+                                <div>
+                                    <p class="font-semibold text-red-800">Ejemplo común:</p>
+                                    <p class="text-sm text-red-700">Llamada falsa de "soporte técnico" pidiendo tu contraseña.</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-red-900 font-semibold text-center">¡IT nunca te pedirá tu contraseña! Si dudas, cuelga y llama al soporte oficial.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card p-6 mb-12">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">¡Riesgo Altísimo! Dispositivos USB Personales</h4>
-                    <p class="text-lg text-center mb-4 font-bold text-red-600">El uso de USB personales está terminantemente prohibido.</p>
+                <!-- Dispositivos USB -->
+                <div class="card p-6 mb-12 text-center bg-red-50 border border-red-200">
+                    <h4 class="text-xl font-bold text-red-800 mb-4">¡Riesgo Altísimo! Dispositivos USB Personales</h4>
+                    <p class="text-lg font-bold text-red-600 mb-4">El uso de USB personales está terminantemente prohibido.</p>
                     <div class="flex justify-center mb-4">
                         <img src="../images/no_usb_device.png" alt="USB prohibido" width="100" height="100">
                     </div>
-                    <p class="text-sm text-gray-600 text-center">Los dispositivos USB son un vector de entrada común para malware. Los USB corporativos deben ser entregados por IT y pasar un escaneo de seguridad.</p>
+                    <p class="text-gray-700">Los dispositivos USB son un vector de entrada común para malware. Los USB corporativos deben ser entregados por IT y pasar un escaneo de seguridad.</p>
                 </div>
 
+                <!-- Procedimientos y Proveedores -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="card" id="contactoIt" title="Haz clic aquí">
+                    <!-- Procedimiento de Reporte -->
+                    <div class="card cursor-pointer hover:shadow-lg transition-shadow" id="contactoIt">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Procedimiento de Reporte de Incidentes</h4>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><strong>¿Qué es un incidente?</strong> Comportamiento raro de tu PC, un correo sospechoso, la pérdida de un dispositivo corporativo, etc.</li>
-                            <li><strong>¿A quién llamo?</strong> Tu primera y única llamada es al equipo de soporte de IT.</li>
-                            <li><strong>Canal Claro:</strong> El canal de reporte de incidentes será comunicado al inicio de la sesión.</li>
-                        </ul>
+                        <div class="space-y-3">
+                            <div class="bg-blue-50 p-3 rounded-lg">
+                                <p class="font-semibold text-blue-800">¿Qué es un incidente?</p>
+                                <p class="text-sm text-blue-700">Comportamiento raro de tu PC, correo sospechoso, pérdida de dispositivo corporativo, etc.</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg">
+                                <p class="font-semibold text-green-800">¿A quién llamo?</p>
+                                <p class="text-sm text-green-700">Tu primera y única llamada es al equipo de soporte de IT.</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg">
+                                <p class="font-semibold text-purple-800">Canal Claro:</p>
+                                <p class="text-sm text-purple-700">El canal de reporte será comunicado al inicio de la sesión.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card" id="politica-minimo-privilegio" title="Haz clic aquí para descargar nuestra politica de minimo privilegio">
+
+                    <!-- Proveedores In-House -->
+                    <div class="card cursor-pointer hover:shadow-lg transition-shadow" id="politica-minimo-privilegio">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Instrucciones para Proveedores In-House</h4>
-                        <p class="text-lg mb-4">Los proveedores que trabajan en nuestras instalaciones deben cumplir con las mismas políticas de confidencialidad y seguridad. Tienen acceso solo a lo que necesitan para su trabajo (Principio de Mínimo Privilegio).</p>
-                        <div class="text-center text-4xl mt-4">🤝</div>
+                        <p class="text-lg mb-4">Los proveedores que trabajan en nuestras instalaciones deben cumplir con las mismas políticas de confidencialidad y seguridad.</p>
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <p class="font-semibold text-yellow-800 text-center">Principio de Mínimo Privilegio</p>
+                            <p class="text-sm text-yellow-700 text-center">Tienen acceso solo a lo que necesitan para su trabajo específico.</p>
+                        </div>
+                        <div class="text-center text-4xl mt-4 text-yellow-600">🤝</div>
                     </div>
                 </div>
 
-                <div class="card p-6 text-center" id="identificaRiesgos" title="Identifica el Riesgo haciendo clic aquí">
+                <!-- Identificación de Riesgos -->
+                <div class="card p-6 text-center cursor-pointer hover:shadow-lg transition-shadow" id="identificaRiesgos">
                     <h4 class="text-xl font-bold text-[#00446A] mb-4">Ejemplo Práctico: Identifica el Riesgo</h4>
-                    <p class="text-lg mb-4">En la sesión, analizaremos fotos de situaciones comunes para identificar riesgos de seguridad, como:</p>
-                    <ul class="list-disc list-inside text-left mx-auto max-w-lg space-y-3">
-                        <li><span class="text-1xl me-2">❌</span>Un post-it con una contraseña pegado en un monitor. </li>
-                        <li><span class="text-1xl me-2">❌</span>Un plano 2D olvidado en la impresora. </li>
-                        <li><span class="text-1xl me-2">❌</span>La puerta del cuarto de servidores abierta.</li>
-                    </ul>
+                    <p class="text-lg mb-6">En la sesión, analizaremos situaciones comunes para identificar riesgos de seguridad:</p>
+                    
+                    <div class="max-w-md mx-auto space-y-2">
+                        <div class="situacion-item">
+                            <span class="text-red-600 text-xl mr-3">❌</span>
+                            <span>Un post-it con una contraseña pegado en un monitor</span>
+                        </div>
+                        <div class="situacion-item">
+                            <span class="text-red-600 text-xl mr-3">❌</span>
+                            <span>Un plano 2D olvidado en la impresora</span>
+                        </div>
+                        <div class="situacion-item">
+                            <span class="text-red-600 text-xl mr-3">❌</span>
+                            <span>La puerta del cuarto de servidores abierta</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <button class="btn btn-primary" id="abrirModalRiesgos"">
+                            <i class="fas fa-search mr-2"></i>Comenzar Identificación de Riesgos
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Modal para identificar riesgos -->
@@ -123,27 +190,29 @@
                             
                             <!-- Contenido de la situación -->
                             <div id="modalContent">
-                                <img id="situacionImage" src="" alt="Situación de riesgo" class="w-full h-64 object-cover rounded-lg mb-4">
-                                <p id="situacionDesc" class="text-lg mb-4"></p>
+                                <div class="bg-gray-100 p-4 rounded-lg mb-4 text-center">
+                                    <img id="situacionImage" src="" alt="Situación de riesgo" class="w-full h-64 object-cover rounded-lg mb-4">
+                                    <p id="situacionDesc" class="text-lg font-semibold">Situación de riesgo a identificar</p>
+                                </div>
                                 
                                 <!-- Contador de progreso -->
-                                <div class="mb-6">
+                                <div class="progreso-container">
                                     <div class="flex justify-between text-sm text-gray-600 mb-2">
                                         <span>Progreso:</span>
                                         <span id="progresoTexto">Situación 1 de 7</span>
                                     </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div id="progresoBarra" class="bg-[#00446A] h-2 rounded-full" style="width: 14%"></div>
+                                    <div class="progreso-barra">
+                                        <div id="progresoBarra" class="progreso-fill" style="width: 14%"></div>
                                     </div>
                                 </div>
                                 
                                 <!-- Botones de acción -->
-                                <div class="flex space-x-4 justify-center">
-                                    <button id="btnCorrecto" class="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
-                                        ✅ Correcto
+                                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center">
+                                    <button id="btnCorrecto" class="btn bg-green-600 hover:bg-green-700 text-white">
+                                        <i class="fas fa-check mr-2"></i>Correcto
                                     </button>
-                                    <button id="btnIncorrecto" class="bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors">
-                                        ❌ Incorrecto
+                                    <button id="btnIncorrecto" class="btn bg-red-600 hover:bg-red-700 text-white">
+                                        <i class="fas fa-times mr-2"></i>Incorrecto
                                     </button>
                                 </div>
                             </div>
@@ -151,10 +220,24 @@
                     </div>
                 </div>
                 
-                <div class="card p-6 mt-12 text-center bg-gray-100">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4">Preparate para la Evaluación Final</h4>
-                    <p class="text-lg mb-2">Para aprobar la capacitación, deberás rendir y aprobar un examen final de 10 preguntas que cubra todos los módulos.</p>
-                    <p class="text-2xl font-bold text-[#009E73]">Resultado Necesario: >80%</p>
+                <!-- Evaluación Final -->
+                <div class="card p-8 mt-12 text-center bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-4">Prepárate para la Evaluación Final</h4>
+                    <p class="text-lg mb-4">Para aprobar la capacitación, deberás rendir y aprobar un examen final de 10 preguntas que cubra todos los módulos.</p>
+                    <div class="bg-white p-4 rounded-lg shadow-md inline-block">
+                        <p class="text-2xl font-bold text-[#009E73]">Resultado Necesario: >80%</p>
+                    </div>
+                </div>
+
+                <!-- Navegación entre módulos -->
+                <div class="flex justify-between mt-12">
+                    <a href="./Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i>Módulo 4: Accesos Remotos
+                    </a>
+                    
+                    <a href="./Modulo6_Temas_adicionales.html" class="btn btn-primary">
+                        Módulo 6: Temas Adicionales <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
                 </div>
             </section>
 

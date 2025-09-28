@@ -602,6 +602,7 @@ const personalForm = document.getElementById('personal-form');
 const quizContent = document.getElementById('quiz-content');
 const resultsContainer = document.getElementById('results-container');
 const questionText = document.getElementById('question-text');
+const currentQuestion = document.getElementById('current-question');
 const optionsContainer = document.getElementById('options-container');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
@@ -620,6 +621,8 @@ const arrayCodes = [
     "F6G9H", "J2K5L", "M7N1P", "Q3R8S", "T4V9W",
     "X2Y6Z", "A7B3C", "E5F8G", "H1J4K", "L9M2N",
     "8U5RT", "0LKJ6", "5FRW5", "LV7Q9", "HD12K",
+    "2YZ67", "0J5P9", "1GQ49", "UP28I", "S4A7M",
+    "TR84F", "0WM4Y", "HG8T3", "X8D3R", "6GU0V",
     "SX53Z", "N5G2W", "6GPU5", "JS036", "3AKJ4"
 ];
 
@@ -730,6 +733,7 @@ function iniciarCuestionario() {
         document.getElementById('final-name').textContent = 
             document.getElementById('name').value + ' ' + document.getElementById('surname').value;
         renderQuestion();
+
     } else {
         Swal.fire({
             icon: 'error',
@@ -838,6 +842,7 @@ function renderQuestion() {
     const question = preguntasSeleccionadas[currentQuestionIndex];
     questionText.textContent = `Pregunta ${currentQuestionIndex + 1}/${preguntasSeleccionadas.length}: ${question.question}`;
     optionsContainer.innerHTML = '';
+    currentQuestion.textContent = `${currentQuestionIndex + 1}`
     
     question.options.forEach((option, index) => {
         const optionItem = document.createElement('div');
@@ -899,7 +904,10 @@ function handleAnswer(selectedIndex) {
             // Remover event listeners para prevenir más clics
             option.replaceWith(option.cloneNode(true));
         });
-        
+
+        // Avanzar progreso inmediatamente
+        advanceProgress();
+
         options[selectedIndex].classList.add('bg-blue-100', 'border-blue-300');
     }
     
@@ -956,11 +964,102 @@ if (prevBtn) {
     });
 }
 
+// Función compacta para aumentar el progreso
+function advanceProgress() {
+    const progressFill = document.getElementById('progress-fill');
+    let currentWidth = parseInt(progressFill.style.width) || 0;
+    let newWidth = currentWidth + 10;
+    
+    // No superar el 100%
+    if (newWidth > 100) newWidth = 100;
+    
+    progressFill.style.width = newWidth + '%';
+}
+
 if (showResultsBtn) {
     showResultsBtn.addEventListener('click', () => {
         showResults();
     });
 }
+
+// Función para reiniciar el examen completamente
+function restartExam() {
+    // 1. Ocultar resultados y mostrar formulario inicial
+    document.getElementById('results-container').classList.add('hidden');
+    document.getElementById('quiz-content').classList.add('hidden');
+    document.getElementById('personal-form').classList.remove('hidden');
+    
+    // 2. Reiniciar la barra de progreso
+    const progressFill = document.getElementById('progress-fill');
+    progressFill.style.width = '0%';
+    
+    // 3. Reiniciar el contador de preguntas
+    document.getElementById('current-question').textContent = '1';
+    
+    // 4. Limpiar las respuestas seleccionadas (si las hay)
+    const selectedOptions = document.querySelectorAll('.option-item.selected');
+    selectedOptions.forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    // 5. Reiniciar el puntaje y variables del examen
+    if (typeof currentQuestionIndex !== 'undefined') {
+        currentQuestionIndex = 0;
+    }
+    
+    if (typeof userAnswers !== 'undefined') {
+        userAnswers = [];
+    }
+    
+    if (typeof score !== 'undefined') {
+        score = 0;
+    }
+    
+    // 6. Reiniciar el formulario de datos personales
+    document.getElementById('quiz-form').reset();
+    
+    // 7. Reiniciar estado de botones
+    document.getElementById('prev-btn').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('btnSubmitForm').classList.add('hidden');
+    
+    // 8. Scroll hacia arriba para mejor experiencia de usuario
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    iniciarCuestionario();
+}
+
+// Función con confirmación antes de reiniciar
+function restartExamWithConfirmation() {
+    Swal.fire({
+        title: '¿Reiniciar examen?',
+        text: "Perderás todo tu progreso actual",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#00446A',
+        cancelButtonColor: '#6B7280',
+        confirmButtonText: 'Sí, reiniciar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            restartExam();
+            Swal.fire({
+                title: 'Reiniciado',
+                text: 'El examen ha sido reiniciado',
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }
+    });
+}
+
+// Usar esta versión si quieres confirmación
+const restarExam = document.getElementById('restart-btn')
+if (restarExam) {
+    restarExam.addEventListener('click', restartExamWithConfirmation);
+}
+
 
 function showResults() {
     finalScore = 0;
@@ -976,6 +1075,7 @@ function showResults() {
     resultsContainer.classList.remove('hidden');
     scoreDisplay.textContent = `${finalScore}/${preguntasSeleccionadas.length}`;
     percentageDisplay.textContent = `Porcentaje de acierto: ${percentage.toFixed(1)}%`;
+
 }
 
 // Array de preguntas completo (20 preguntas)
@@ -1229,6 +1329,9 @@ if (downloadPdfBtn) {
     downloadPdfBtn.addEventListener('click', () => {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
+
+        const restartExamBtn = document.getElementById('restart-btn')
+        restartExamBtn.setAttribute('disabled', true)
         
         const name = document.getElementById('name').value;
         const surname = document.getElementById('surname').value;
@@ -1239,6 +1342,11 @@ if (downloadPdfBtn) {
         const percentage = (score / totalQuestions) * 100;
         const now = new Date();
         const passed = percentage >= 80;
+
+        if (passed) {
+            const restartExamBtn = document.getElementById('restart-btn')
+            restartExamBtn.setAttribute('disabled', true)
+        }
 
         const iconOk = "data:image/png;base64,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"
         const iconNoOk = "data:image/png;base64,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"
@@ -1672,7 +1780,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 1000);
             });
         }
-    
         
         const contactoIt = document.getElementById('contactoIt');
         if (contactoIt) {
@@ -1719,6 +1826,48 @@ document.addEventListener('DOMContentLoaded', function() {
 //---------------------- End Modulo 4 -------------------------------
 
 //---------------------- Modulo 5 -----------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const contactoIt = document.getElementById('contactoIt');
+        if (contactoIt) {
+            contactoIt.addEventListener('click', function() {
+                Swal.fire({
+                    title: 'SOPORTE IT PRODISMO',
+                    html: `
+                        <div class="text-left text-gray-700 leading-relaxed">
+                            <p class="mb-2">Para consultas relacionadas con IT y Seguridad, contacta a:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>
+                                    <strong>Mail IT:</strong> <a href="mailto:itprodismo@prodismo.com" class="text-blue-600 hover:underline">itprodismo@prodismo.com</a>
+                                </li>
+                                <li>
+                                    <strong>Seguridad:</strong> <a href="mailto:eferrari@prodismo.com" class="text-blue-600 hover:underline">eferrari@prodismo.com</a>
+                                </li>
+                                <li>
+                                <strong>IT Manager:</strong> <a href="mailto:gmontalbetti@prodismo.com" class="text-blue-600 hover:underline">gmontalbetti@prodismo.com</a>
+                                </li>
+                                <li>
+                                <strong>Help Desk (STI):</strong> <a href="https://apps.powerapps.com/play/e/default-48f8f875-b75a-4037-a9d8-15d6bbd7c5f9/a/fce0c9bd-9de6-4890-b9ad-5d4f8e05b93f?tenantId=48f8f875-b75a-4037-a9d8-15d6bbd7c5f9&source=teamsopenwebsite&hint=0bdd9fd3-167c-40ea-ac48-d4e5868adbad&sourcetime=1716909981370#" class="text-blue-600"><img src="../images/HelpDesk_logo2.png" class="m-auto text- center"></a>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-sm text-gray-600">Estamos aquí para ayudarte a resolver cualquier duda.</p>
+                        </div>
+                    `,
+                    imageUrl: "../images/ITProdimo_logo.png",
+                    showCloseButton: true, // Muestra el botón de cerrar (la "X")
+                    showConfirmButton: true, // Muestra el botón de "OK"
+                    confirmButtonText: 'Entendido',
+                    confirmButtonColor: '#08089d', // Color del botón de confirmación
+                    allowOutsideClick: false, // No se puede cerrar haciendo clic fuera del modal
+                    customClass: {
+                        popup: 'rounded-lg shadow-xl', // Clases de Tailwind para el estilo del popup
+                        title: 'text-2xl font-bold text-gray-800',
+                        htmlContainer: 'text-base',
+                    },
+                    width: '500px', // Ancho del modal, para que no ocupe toda la pantalla
+                });
+            });
+        }
+});
 // Array de situaciones de riesgo (7 situaciones)
 const situacionesRiesgo = [
     {
@@ -1726,7 +1875,7 @@ const situacionesRiesgo = [
         titulo: "Contraseña en Post-it",
         descripcion: "Un empleado ha pegado su contraseña en un post-it visible en el monitor de su computadora.",
         imagen: "../images/riesgos/password-postit.jpg", // Ruta a tu imagen
-        esCorrecto: true // Esta situación es INCORRECTA (riesgo)
+        esCorrecto: true
     },
     {
         id: 2,
@@ -1777,6 +1926,7 @@ let situacionesMostradas = [];
 
 // Elementos del DOM
 const modal = document.getElementById('riesgosModal');
+const abrirRiesgosModal = document.getElementById('abrirModalRiesgos');
 const modalTitle = document.getElementById('modalTitle');
 const situacionImage = document.getElementById('situacionImage');
 const situacionDesc = document.getElementById('situacionDesc');
@@ -1786,6 +1936,17 @@ const btnCorrecto = document.getElementById('btnCorrecto');
 const btnIncorrecto = document.getElementById('btnIncorrecto');
 const closeModal = document.getElementById('closeModal');
 const identificaRiesgos = document.getElementById('identificaRiesgos');
+
+// Función para abrir el modal de identificación de riesgos
+function abrirModalRiesgos() {
+    document.getElementById('riesgosModal').classList.remove('hidden')
+}
+
+if (abrirRiesgosModal) {
+    abrirRiesgosModal.addEventListener('click', () => {
+        abrirModalRiesgos()
+    })
+}
 
 // Función para mostrar una situación
 function mostrarSituacion() {
@@ -1984,80 +2145,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //---------------------- Modulo 6 -------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleButtons = document.querySelectorAll('.toggle-btn');
-    if (toggleButtons) {
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Encuentra el div de contenido asociado
-                const content = this.closest('div').nextElementSibling;
-                
-                // Alterna la visibilidad del contenido
-                if (content) {
-                    content.classList.toggle('hidden');
-                    
-                    // Cambia el ícono del botón
-                    const icon = this.querySelector('span');
-                    if (content.classList.contains('hidden')) {
-                        icon.textContent = '▼';
-                        this.classList.remove('rotate-90');
-                    } else {
-                        icon.textContent = '▲';
-                        this.classList.add('rotate-90');
-                    }
-                }
-            });
-        });
-    }
-
+    
     const policyBtnConfirm = document.getElementById('policyBtnConfirm');
     if (policyBtnConfirm) {
         document.getElementById('policyBtnConfirm').addEventListener('click', function() {
-            Swal.fire({
-                title: 'Confirmación de Política',
-                html: `
-                    <p>Al confirmar, aceptas cumplir con la <strong>Política de Escritorio y Pantalla Limpios</strong>.</p>
-                    <p class="mt-3">Esta política incluye:</p>
-                    <ul class="text-left mt-2 ml-4">
-                        <li>• No dejar información sensible visible en el escritorio</li>
-                        <li>• Bloquear la pantalla al ausentarse</li>
-                        <li>• Mantener la confidencialidad de la información</li>
-                        <li>• Almacenar documentos confidenciales bajo llave</li>
-                        <li>• Proteger dispositivos de almacenamiento extraíbles</li>
-                    </ul>
-                `,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#00446A',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Confirmar',
-                cancelButtonText: 'Cancelar',
-                customClass: {
-                    popup: 'modal-content'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: '¡Confirmado!',
-                        text: 'Has aceptado cumplir con la política de escritorio y pantalla limpios.',
-                        icon: 'success',
-                        confirmButtonColor: '#00446A',
-                        customClass: {
-                            popup: 'modal-content'
-                        }
-                    });
-                    
-                    // Cambiar el texto del botón después de la confirmación
-                    policyBtnConfirm.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                        Política Confirmada
-                    `;
-                    policyBtnConfirm.classList.add('bg-green-600', 'hover:bg-green-700');
-                    policyBtnConfirm.classList.remove('bg-[#00446A]', 'hover:bg-[#002d4a]');
-                }
-            });
+            confirmPolicy('Escritorio y Pantalla Limpios');
         });
+        
     }
     
     // Agregar efecto de clic a los elementos de la política
@@ -2074,51 +2168,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const custodyBtn = document.getElementById('custodyBtn');
     if (custodyBtn) {
         custodyBtn.addEventListener('click', function() {
-            Swal.fire({
-                title: 'Confirmación de Política',
-                html: `
-                    <p>Al confirmar, aceptas cumplir con la <strong>Política de Cadena de Custodia de la Información</strong>.</p>
-                    <p class="mt-3">Esta política incluye:</p>
-                    <ul class="text-left mt-2 ml-4">
-                        <li>• Registrar todo acceso a información confidencial de clientes</li>
-                        <li>• Obtener autorización para transferencias a terceros</li>
-                        <li>• Notificar inmediatamente accesos no autorizados</li>
-                        <li>• Utilizar sistemas de trazabilidad documentados</li>
-                        <li>• Participar en revisiones periódicas de la cadena</li>
-                    </ul>
-                `,
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#2d7d5a',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Confirmar',
-                cancelButtonText: 'Cancelar',
-                customClass: {
-                    popup: 'modal-content'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: '¡Confirmado!',
-                        text: 'Has aceptado cumplir con la política de cadena de custodia de la información.',
-                        icon: 'success',
-                        confirmButtonColor: '#2d7d5a',
-                        customClass: {
-                            popup: 'modal-content'
-                        }
-                    });
-                    
-                    // Cambiar el texto del botón después de la confirmación
-                    document.getElementById('custodyBtn').innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                        Política Confirmada
-                    `;
-                    document.getElementById('custodyBtn').classList.add('bg-green-600', 'hover:bg-green-700');
-                    document.getElementById('custodyBtn').classList.remove('bg-[#2d7d5a]', 'hover:bg-[#1f5c41]');
-                }
-            });
+            confirmPolicy('Cadena de Custodia');
+        });
+    }
+
+    function confirmPolicy(policyName) {
+        Swal.fire({
+            title: 'Confirmación de Conocimiento',
+            html: `¿Confirmas que has leído y comprendido la política de <strong>${policyName}</strong>?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#00446A',
+            cancelButtonColor: '#6B7280',
+            confirmButtonText: 'Sí, confirmo',
+            cancelButtonText: 'Cancelar'
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: '¡Confirmado!',
+                    text: `Tu conocimiento de la política ${policyName} ha sido registrado.`,
+                    icon: 'success',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            }
         });
     }
 });
@@ -2235,22 +2310,95 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //------------------ Previa Examen Final ----------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
-    // Configurar el evento para el botón de código de acceso
+    // Configurar el evento para el botón de código de acceso (si existe en esta página)
     const btnCodigoAcceso = document.getElementById('btnCodigoAcceso');
     if (btnCodigoAcceso) {
         btnCodigoAcceso.addEventListener('click', function() {
             mostrarModalVerificacionFinal();
         });
     }
+
+    // Configurar eventos para la página de examen final (si existe en esta página)
+    const btnVerificarCodigo = document.getElementById('btnVerificarCodigo');
+    const accessCodeInput = document.getElementById('accessCode');
+
+    if (btnVerificarCodigo && accessCodeInput) {
+        // Función para verificar el código de acceso
+        btnVerificarCodigo.addEventListener('click', function() {
+            const accessCode = accessCodeInput.value.trim().toUpperCase();
+            const examLinkContainer = document.getElementById('examLinkContainer');
+            
+            if (!accessCode) {
+                Swal.fire({
+                    title: 'Código Requerido',
+                    text: 'Por favor ingresa tu código de acceso',
+                    icon: 'warning',
+                    confirmButtonColor: '#00446A'
+                });
+                return;
+            }
+            
+            if (typeof arrayCodes !== 'undefined' && arrayCodes.includes(accessCode)) {
+                // Código válido
+                accessCodeInput.classList.add('access-granted');
+                if (examLinkContainer) {
+                    examLinkContainer.classList.remove('hidden');
+                }
+                
+                Swal.fire({
+                    title: '¡Código Válido!',
+                    text: 'Acceso concedido al examen final',
+                    icon: 'success',
+                    confirmButtonColor: '#00446A'
+                });
+                
+                // Scroll suave al enlace del examen
+                if (examLinkContainer) {
+                    examLinkContainer.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Código inválido
+                Swal.fire({
+                    title: 'Código Inválido',
+                    text: 'El código ingresado no es válido. Verifica que hayas aprobado el Módulo 3.',
+                    icon: 'error',
+                    confirmButtonColor: '#00446A'
+                });
+            }
+        });
+
+        // Permitir presionar Enter para verificar el código
+        accessCodeInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                btnVerificarCodigo.click();
+            }
+        });
+
+        // Formatear automáticamente el código (5 caracteres máx)
+        accessCodeInput.addEventListener('input', function(e) {
+            let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            
+            if (value.length > 5) {
+                value = value.substring(0, 5);
+            }
+            
+            e.target.value = value;
+        });
+    }
 });
 
-// Función para verificar el código de acceso
+// Función para verificar el código de acceso (compatibilidad con modal)
 function verificarCodigoAccesoFinal(codigo) {
-    return arrayCodes.includes(codigo.toUpperCase());
+    return typeof arrayCodes !== 'undefined' && arrayCodes.includes(codigo.toUpperCase());
 }
 
 // Función para mostrar el modal de verificación
 function mostrarModalVerificacionFinal() {
+    // Verificar si ya existe un modal abierto
+    if (document.getElementById('codigo-verification-overlay-finalExam')) {
+        return;
+    }
+
     // Crear el overlay/modal
     const modalOverlayFinalExam = document.createElement('div');
     modalOverlayFinalExam.id = 'codigo-verification-overlay-finalExam';
@@ -2317,7 +2465,7 @@ function mostrarModalVerificacionFinal() {
     modalOverlayFinalExam.appendChild(modalContentFinalExam);
     document.body.appendChild(modalOverlayFinalExam);
 
-    // Ocultar el contenido principal de la página
+    // Ocultar el contenido principal de la página (si existe)
     const mainContent = document.querySelector('main');
     const footerContent = document.querySelector('footer');
     if (mainContent) mainContent.style.display = 'none';
@@ -2328,76 +2476,78 @@ function mostrarModalVerificacionFinal() {
     const btnVerificarFinalExam = document.getElementById('btn-verificar-finalExam');
     const errorMessageFinalExam = document.getElementById('error-message-finalExam');
 
-    // Función para auto-convertir a mayúsculas y limitar a 5 caracteres
-    codigoInputFinalExam.addEventListener('input', function() {
-        this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 5);
-    });
+    if (codigoInputFinalExam && btnVerificarFinalExam && errorMessageFinalExam) {
+        // Función para auto-convertir a mayúsculas y limitar a 5 caracteres
+        codigoInputFinalExam.addEventListener('input', function() {
+            this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 5);
+        });
 
-    // Función de verificación
-    function verificarCodigoFinal() {
-        const codigo = codigoInputFinalExam.value.trim();
-        
-        if (!codigo) {
-            errorMessageFinalExam.textContent = 'Por favor, ingresa un código.';
-            errorMessageFinalExam.classList.remove('hidden');
-            codigoInputFinalExam.focus();
-            return;
-        }
-
-        if (verificarCodigoAccesoFinal(codigo)) {            
-            // Mostrar mensaje de éxito
-            Swal.fire({
-                icon: 'success',
-                title: '¡Código Verificado!',
-                text: `Acceso concedido al Examen Final.`,
-                confirmButtonColor: '#00446A',
-                timer: 1600,
-                showConfirmButton: false
-            });
-
-            // Transformar el modal para mostrar el botón de redirección (NO cerrar el modal)
-            setTimeout(() => {
-                habilitarEnlaceExamenFinal(modalOverlayFinalExam);
-            }, 1600);
-
-        } else {
-            // Código incorrecto
-            errorMessageFinalExam.textContent = 'Código incorrecto. Por favor, verifica e intenta nuevamente.';
-            errorMessageFinalExam.classList.remove('hidden');
-            codigoInputFinalExam.focus();
-            codigoInputFinalExam.select();
+        // Función de verificación
+        function verificarCodigoFinal() {
+            const codigo = codigoInputFinalExam.value.trim();
             
-            // Agregar efecto de shake al input
-            codigoInputFinalExam.style.animation = 'shake 0.5s';
-            setTimeout(() => {
-                codigoInputFinalExam.style.animation = '';
-            }, 500);
-        }
-    }
+            if (!codigo) {
+                errorMessageFinalExam.textContent = 'Por favor, ingresa un código.';
+                errorMessageFinalExam.classList.remove('hidden');
+                codigoInputFinalExam.focus();
+                return;
+            }
 
-    // Event listeners
-    btnVerificarFinalExam.addEventListener('click', verificarCodigoFinal);
-    
-    codigoInputFinalExam.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            verificarCodigoFinal();
-        }
-    });
+            if (verificarCodigoAccesoFinal(codigo)) {            
+                // Mostrar mensaje de éxito
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Código Verificado!',
+                    text: `Acceso concedido al Examen Final.`,
+                    confirmButtonColor: '#00446A',
+                    timer: 1600,
+                    showConfirmButton: false
+                });
 
-    // Prevenir que se cierre el modal haciendo clic fuera
-    modalOverlayFinalExam.addEventListener('click', function(e) {
-        if (e.target === modalOverlayFinalExam) {
+                // Transformar el modal para mostrar el botón de redirección
+                setTimeout(() => {
+                    habilitarEnlaceExamenFinal(modalOverlayFinalExam);
+                }, 1600);
+
+            } else {
+                // Código incorrecto
+                errorMessageFinalExam.textContent = 'Código incorrecto. Por favor, verifica e intenta nuevamente.';
+                errorMessageFinalExam.classList.remove('hidden');
+                codigoInputFinalExam.focus();
+                codigoInputFinalExam.select();
+                
+                // Agregar efecto de shake al input
+                codigoInputFinalExam.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    codigoInputFinalExam.style.animation = '';
+                }, 500);
+            }
+        }
+
+        // Event listeners
+        btnVerificarFinalExam.addEventListener('click', verificarCodigoFinal);
+        
+        codigoInputFinalExam.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verificarCodigoFinal();
+            }
+        });
+
+        // Prevenir que se cierre el modal haciendo clic fuera
+        modalOverlayFinalExam.addEventListener('click', function(e) {
+            if (e.target === modalOverlayFinalExam) {
+                codigoInputFinalExam.focus();
+            }
+        });
+
+        // Enfocar el input automáticamente
+        setTimeout(() => {
             codigoInputFinalExam.focus();
-        }
-    });
-
-    // Enfocar el input automáticamente
-    setTimeout(() => {
-        codigoInputFinalExam.focus();
-    }, 300);
+        }, 300);
+    }
 }
 
-// Función ir al examen final (MODIFICADA)
+// Función para habilitar el enlace al examen final
 function habilitarEnlaceExamenFinal(modalOverlayFinalExam) {
     // Buscar el contenedor del botón de verificación
     const btnVerificarContainer = document.getElementById('btn-verificar-finalExam')?.parentNode;
@@ -2424,13 +2574,14 @@ function habilitarEnlaceExamenFinal(modalOverlayFinalExam) {
         
         // Ocultar el botón de verificación ya que el código fue aceptado
         const btnVerificar = document.getElementById('btn-verificar-finalExam');
-        if (btnVerificar) btnVerificar.style.display = 'none'
+        if (btnVerificar) btnVerificar.style.display = 'none';
         
         // También ocultar el input, mensaje de error, label y footer
         const codigoInput = document.getElementById('codigo-input-finalExam');
         const errorMessage = document.getElementById('error-message-finalExam');
-        const labelInput = document.getElementById('label-codigo-input-finalExam')
-        const footerModalFinal = document.getElementById('footer-modal-final')
+        const labelInput = document.getElementById('label-codigo-input-finalExam');
+        const footerModalFinal = document.getElementById('footer-modal-final');
+        
         if (codigoInput) codigoInput.style.display = 'none';
         if (errorMessage) errorMessage.style.display = 'none';
         if (labelInput) labelInput.style.display = 'none';
@@ -2457,11 +2608,10 @@ function habilitarEnlaceExamenFinal(modalOverlayFinalExam) {
         }
     }
 }
+
 //------------------ End Previa Examen Final ----------------------------------------
 
 //------------------ Examen Final 10 preguntas -------------------------------
-let preguntasExamenFinal = [];
-
 const personalFormFinal = document.getElementById('personal-form-final');
 const quizContentFinal = document.getElementById('quiz-content-final');
 const resultsContainerFinal = document.getElementById('results-container-final');
@@ -2475,13 +2625,60 @@ const finalNameFinal = document.getElementById('final-name-final');
 const percentageDisplayFinal = document.getElementById('percentage-display-final');
 const downloadPdfBtnFinal = document.getElementById('download-pdf-btn-final');
 const btnSubmitFormFinal = document.getElementById('btnSubmitForm-final');
+const btnEncuestaFinal = document.getElementById('encuesta-btn-final');
 
+// Modificar el evento submit del formulario
+if (personalFormFinal) {
+    personalFormFinal.addEventListener('submit', (e) => {
+        e.preventDefault();
+        iniciarCuestionarioFinal();
+    });
+}
 
+// Agregar evento al botón específico
+document.addEventListener('DOMContentLoaded', function() {
+    const btnSubmitFormFinal = document.getElementById('btnSubmitForm-final');
+    
+    if (btnSubmitFormFinal) {
+        btnSubmitFormFinal.addEventListener('click', function(e) {
+            e.preventDefault();
+            iniciarCuestionarioFinal();
+        });
+    }
+});
+
+if (nextBtnFinal) {
+    nextBtnFinal.addEventListener('click', () => {
+        if (currentQuestionIndexFinal < preguntasSeleccionadasFinal.length - 1) {
+            currentQuestionIndexFinal++;
+            renderQuestionFinal();
+        }
+    });
+}
+
+if (prevBtnFinal) {
+    prevBtnFinal.addEventListener('click', () => {
+        if (currentQuestionIndexFinal > 0) {
+            currentQuestionIndexFinal--;
+            renderQuestionFinal();
+        }
+    });
+}
+
+if (showResultsBtnFinal) {
+    showResultsBtnFinal.addEventListener('click', () => {
+        showResultsFinal();
+    });
+}
+
+// Variables globales para el examen final
 let currentQuestionIndexFinal = 0;
 let userAnswersFinal = {};
 let isFormSubmittedFinal = false;
 let finalScoreFinal = 0;
 let preguntasSeleccionadasFinal = []; // Array para guardar las preguntas seleccionadas aleatoriamente
+let timeSpentFinal = 0;
+let timerIntervalFinal;
 
 // Función para validar el email corporativo
 function validarEmailCorporativoFinal(email) {
@@ -2521,7 +2718,7 @@ function validarFormularioCompletoFinal() {
         };
     }
     
-    const validacionEmailFinal = validarEmailCorporativo(corporateEmailFinal);
+    const validacionEmailFinal = validarEmailCorporativoFinal(corporateEmailFinal);
     if (!validacionEmailFinal.valido) {
         return validacionEmailFinal;
     }
@@ -2539,7 +2736,7 @@ function validarFormularioCompletoFinal() {
     };
 }
 
-// Función para seleccionar 10 preguntas aleatorias del total de 20
+// Función para seleccionar 10 preguntas aleatorias del total
 function seleccionarPreguntasAleatoriasFinal() {
     const preguntasAleatoriasFinal = [...quizDataFinal];
     
@@ -2573,15 +2770,26 @@ function iniciarCuestionarioFinal() {
     const validacion = validarFormularioCompletoFinal();
     
     if (validacion.valido) {
-        isFormSubmitted = true;
+        isFormSubmittedFinal = true;
         
         // 1. Seleccionar las 10 preguntas aleatorias al inicio (solo una vez)
         const preguntasAleatoriasFinal = seleccionarPreguntasAleatoriasFinal();
         preguntasSeleccionadasFinal = preguntasAleatoriasFinal.map(pregunta => mezclarOpcionesFinal(pregunta));
 
-        personalFormFinal.classList.add('hidden');
-        quizContentFinal.classList.remove('hidden');
-        finalNameFinal.textContent = nameFinal.value + ' ' + surnameFinal.value;
+        document.getElementById('personal-form-final').classList.add('hidden');
+        document.getElementById('quiz-content-final').classList.remove('hidden');
+        document.getElementById('final-name-final').textContent = document.getElementById('nameFinal').value + ' ' + document.getElementById('surnameFinal').value;
+        
+        // 2. Iniciar la barra de progreso
+        const progressFill = document.getElementById('progress-fill-final');
+        progressFill.style.width = '0%';
+
+        // Iniciar temporizador
+        startTimerFinal();
+        
+        // Actualizar contador de preguntas
+        document.getElementById('total-questions-final').textContent = preguntasSeleccionadasFinal.length;
+        
         renderQuestionFinal();
 
     } else {
@@ -2595,134 +2803,36 @@ function iniciarCuestionarioFinal() {
     }
 }
 
-// Modificar el evento submit del formulario
-if (personalFormFinal) {
-    personalFormFinal.addEventListener('submit', (e) => {
-        e.preventDefault();
-        iniciarCuestionarioFinal();
-    });
+// Función para iniciar el temporizador
+function startTimerFinal() {
+    timeSpentFinal = 0;
+    timerIntervalFinal = setInterval(function() {
+        timeSpentFinal++;
+    }, 1000);
 }
 
-// Agregar evento al botón específico
-document.addEventListener('DOMContentLoaded', function() {
-    const btnSubmitFormFinal = document.getElementById('btnSubmitForm-final');
-    
-    if (btnSubmitFormFinal) {
-        btnSubmitFormFinal.addEventListener('click', function(e) {
-            e.preventDefault();
-            iniciarCuestionarioFinal();
-        });
-    }
-});
+// Función para detener el temporizador
+function stopTimerFinal() {
+    clearInterval(timerIntervalFinal);
+}
 
-// Validación en tiempo real para el email
-document.addEventListener('DOMContentLoaded', function() {
-    const emailInputFinal = document.getElementById('corporateEmailFinal');
-    const btnSubmitFormFinal = document.getElementById('btnSubmitForm-final');
-    
-    if (emailInputFinal) {
-        emailInputFinal.addEventListener('blur', function() {
-            const email = this.value;
-            if (email) {
-                const validacion = validarEmailCorporativoFinal(email);
-                
-                if (!validacion.valido) {
-                    this.classList.add('border-red-500', 'ring-2', 'ring-red-200');
-                    let errorSpan = this.parentNode.querySelector('.email-error');
-                    if (!errorSpan) {
-                        errorSpan = document.createElement('span');
-                        errorSpan.className = 'email-error text-red-500 text-xs mt-1';
-                        this.parentNode.appendChild(errorSpan);
-                    }
-                    errorSpan.textContent = validacion.mensaje;
-                    
-                    if (btnSubmitFormFinal) {
-                        btnSubmitFormFinal.disabled = true;
-                        btnSubmitFormFinal.classList.add('opacity-50', 'cursor-not-allowed');
-                    }
-                } else {
-                    this.classList.remove('border-red-500', 'ring-2', 'ring-red-200');
-                    this.classList.add('border-green-500', 'ring-2', 'ring-green-200');
-                    const errorSpan = this.parentNode.querySelector('.email-error');
-                    if (errorSpan) {
-                        errorSpan.remove();
-                    }
-                    
-                    if (btnSubmitFormFinal) {
-                        btnSubmitFormFinal.disabled = false;
-                        btnSubmitFormFinal.classList.remove('opacity-50', 'cursor-not-allowed');
-                    }
-                }
-            }
-        });
-        
-        emailInputFinal.addEventListener('input', function() {
-            this.classList.remove('border-red-500', 'border-green-500', 'ring-2', 'ring-red-200', 'ring-green-200');
-            const errorSpan = this.parentNode.querySelector('.email-error');
-            if (errorSpan) {
-                errorSpan.remove();
-            }
-            
-            if (btnSubmitFormFinal) {
-                btnSubmitFormFinal.disabled = false;
-                btnSubmitFormFinal.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        });
-    }
-
-    // Función para validar todo el formulario
-    function validarFormularioCompletoFinal() {
-        const name = document.getElementById('nameFinal').value.trim();
-        const surname = document.getElementById('surnameFinal').value.trim();
-        const employeeId = document.getElementById('employeeIdFinal').value.trim();
-        const corporateEmail = document.getElementById('corporateEmailFinal').value.trim();
-        
-        if (!name || !surname || !employeeId || !corporateEmail) {
-            return {
-                valido: false,
-                mensaje: 'Todos los campos son obligatorios'
-            };
-        }
-        
-        const validacionEmail = validarEmailCorporativo(corporateEmail);
-        if (!validacionEmail.valido) {
-            return validacionEmail;
-        }
-        
-        if (isNaN(employeeId) || employeeId <= 0) {
-            return {
-                valido: false,
-                mensaje: 'El número de legajo debe ser un número válido'
-            };
-        }
-        
-        return {
-            valido: true,
-            mensaje: 'Formulario válido'
-        };
-    }
-    
-    const camposFinal = ['nameFinal', 'surnameFinal', 'employeeIdFinal'];
-    camposFinal.forEach(campoId => {
-        const campo = document.getElementById(campoId);
-        if (campo && btnSubmitFormFinal) {
-            campo.addEventListener('input', function() {
-                const validacion = validarFormularioCompletoFinal();
-                btnSubmitFormFinal.disabled = !validacion.valido;
-                if (validacion.valido) {
-                    btnSubmitFormFinal.classList.remove('opacity-50', 'cursor-not-allowed');
-                } else {
-                    btnSubmitFormFinal.classList.add('opacity-50', 'cursor-not-allowed');
-                }
-            });
-        }
-    });
-});
+// Función para formatear el tiempo
+function formatTimeFinal(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
 
 function renderQuestionFinal() {
     // Usar las preguntas ya seleccionadas al inicio (no volver a seleccionar)
     const question = preguntasSeleccionadasFinal[currentQuestionIndexFinal];
-    questionTextFinal.textContent = `Pregunta ${currentQuestionIndexFinal + 1}/${preguntasSeleccionadasFinal.length}: ${question.question}`;
+    document.getElementById('question-text-final').textContent = question.question;
+    document.getElementById('current-question-final').textContent = currentQuestionIndexFinal + 1;
+    
+    // Actualizar barra de progreso
+    const progressPercentage = ((currentQuestionIndexFinal + 1) / preguntasSeleccionadasFinal.length) * 100;
+    document.getElementById('progress-fill-final').style.width = `${progressPercentage}%`;
+    
     optionsContainerFinal.innerHTML = '';
     
     question.options.forEach((option, index) => {
@@ -2786,6 +2896,9 @@ function handleAnswerFinal(selectedIndex) {
             option.replaceWith(option.cloneNode(true));
         });
 
+        // Avanzar progreso inmediatamente
+        advanceProgressFinal();
+
         options[selectedIndex].classList.add('bg-blue-100', 'border-blue-300');
     }
     
@@ -2797,58 +2910,127 @@ function verificarCompletitudFinal() {
     const verificarCompletitudFinal = Object.keys(userAnswersFinal).length === preguntasSeleccionadasFinal.length;
     
     if (verificarCompletitudFinal && currentQuestionIndexFinal === preguntasSeleccionadasFinal.length - 1) {
-        showResultsBtnFinal.classList.remove('hidden');
-        nextBtnFinal.classList.add('hidden');
+        document.getElementById('showResultsBtn-final').classList.remove('hidden');
+        document.getElementById('next-btn-final').classList.add('hidden');
     } else {
-        showResultsBtnFinal.classList.add('hidden');
+        document.getElementById('showResultsBtn-final').classList.add('hidden');
     }
 }
 
 function updateNavigationButtonsFinal() {
     if (currentQuestionIndexFinal === 0) {
-        prevBtnFinal.style.display = 'none';
+        document.getElementById('prev-btn-final').style.display = 'none';
     } else {
-        prevBtnFinal.style.display = 'inline-block';
+        document.getElementById('prev-btn-final').style.display = 'inline-block';
     }
 
     if (currentQuestionIndexFinal === preguntasSeleccionadasFinal.length - 1) {
-        nextBtnFinal.style.display = 'none';
+        document.getElementById('next-btn-final').style.display = 'none';
         // Solo mostrar botón de resultados si todas están respondidas
         if (Object.keys(userAnswersFinal).length === preguntasSeleccionadasFinal.length) {
-            showResultsBtnFinal.classList.remove('hidden');
+            document.getElementById('showResultsBtn-final').classList.remove('hidden');
         }
     } else {
-        nextBtnFinal.style.display = 'inline-block';
-        nextBtnFinal.textContent = 'Siguiente';
-        showResultsBtnFinal.classList.add('hidden');
+        document.getElementById('next-btn-final').style.display = 'inline-block';
+        document.getElementById('next-btn-final').textContent = 'Siguiente';
+        document.getElementById('showResultsBtn-final').classList.add('hidden');
     }
 }
 
-if (nextBtnFinal) {
-    nextBtnFinal.addEventListener('click', () => {
-        if (currentQuestionIndexFinal < preguntasSeleccionadasFinal.length - 1) {
-            currentQuestionIndexFinal++;
-            renderQuestionFinal();
+// Función para reiniciar el examen completamente
+function restartExamFinal() {
+    // 1. Ocultar resultados y mostrar formulario inicial
+    document.getElementById('results-container-final').classList.add('hidden');
+    document.getElementById('quiz-content-final').classList.add('hidden');
+    document.getElementById('personal-form-final').classList.remove('hidden');
+    
+    // 2. Reiniciar la barra de progreso
+    const progressFill = document.getElementById('progress-fill-final');
+    progressFill.style.width = '0%';
+    
+    // 3. Reiniciar el contador de preguntas
+    document.getElementById('current-question-final').textContent = '1';
+    
+    // 4. Limpiar las respuestas seleccionadas (si las hay)
+    const selectedOptions = document.querySelectorAll('.option-item.selected');
+    selectedOptions.forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    // 5. Reiniciar el puntaje y variables del examen
+    if (typeof currentQuestionIndex !== 'undefined') {
+        currentQuestionIndex = 0;
+    }
+    
+    if (typeof userAnswers !== 'undefined') {
+        userAnswers = [];
+    }
+    
+    if (typeof score !== 'undefined') {
+        score = 0;
+    }
+    
+    // 6. Reiniciar el formulario de datos personales
+    document.getElementById('quiz-form-final').reset();
+    
+    // 7. Reiniciar estado de botones
+    document.getElementById('prev-btn-final').style.display = 'none';
+    document.getElementById('next-btn-final').style.display = 'none';
+    document.getElementById('btnSubmitForm-final').classList.remove('hidden');
+    
+    // 8. Scroll hacia arriba para mejor experiencia de usuario
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    iniciarCuestionarioFinal();
+}
+
+// Función con confirmación antes de reiniciar
+function restartExamWithConfirmationFinal() {
+    Swal.fire({
+        title: '¿Reiniciar examen?',
+        text: "Perderás todo tu progreso actual",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#00446A',
+        cancelButtonColor: '#6B7280',
+        confirmButtonText: 'Sí, reiniciar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            restartExamFinal();
+            Swal.fire({
+                title: 'Reiniciado',
+                text: 'El examen ha sido reiniciado',
+                icon: 'success',
+                timer: 1500,
+                showConfirmButton: false
+            });
         }
     });
 }
 
-if (prevBtnFinal) {
-    prevBtnFinal.addEventListener('click', () => {
-        if (currentQuestionIndexFinal > 0) {
-            currentQuestionIndexFinal--;
-            renderQuestionFinal();
-        }
-    });
+// Usar esta versión si quieres confirmación
+const restarExamFinal = document.getElementById('restart-btn-final')
+if (restarExamFinal) {
+    restarExamFinal.addEventListener('click', restartExamWithConfirmationFinal);
 }
 
-if (showResultsBtnFinal) {
-    showResultsBtnFinal.addEventListener('click', () => {
-        showResultsFinal();
-    });
+// Función compacta para aumentar el progreso
+function advanceProgressFinal() {
+    const progressFillFinal = document.getElementById('progress-fill-final');
+    let currentWidthFinal = parseInt(progressFillFinal.style.width) || 0;
+    let newWidthFinal = currentWidthFinal + 10;
+    
+    // No superar el 100%
+    if (newWidthFinal > 100) newWidthFinal = 100;
+    
+    progressFillFinal.style.width = newWidthFinal + '%';
 }
 
 function showResultsFinal() {
+    // Detener temporizador
+    stopTimerFinal();
+    
     finalScoreFinal = 0;
     preguntasSeleccionadasFinal.forEach((question, index) => {
         if (userAnswersFinal[index] !== undefined && question.options[userAnswersFinal[index]].correct) {
@@ -2858,11 +3040,33 @@ function showResultsFinal() {
     
     const percentageFinal = (finalScoreFinal / preguntasSeleccionadasFinal.length) * 100;
     
-    quizContentFinal.classList.add('hidden');
-    resultsContainerFinal.classList.remove('hidden');
-    scoreDisplayFinal.textContent = `${finalScoreFinal}/${preguntasSeleccionadasFinal.length}`;
-    percentageDisplayFinal.textContent = `Porcentaje de acierto: ${percentageFinal.toFixed(1)}%`;
+    document.getElementById('quiz-content-final').classList.add('hidden');
+    document.getElementById('results-container-final').classList.remove('hidden');
+    document.getElementById('score-display-final').textContent = `${finalScoreFinal}/${preguntasSeleccionadasFinal.length}`;
+    document.getElementById('percentage-display-final').textContent = `${percentageFinal.toFixed(1)}%`;
+    
+    // Aplicar clase de color según el puntaje
+    const scoreDisplay = document.getElementById('score-display-final');
+    if (percentageFinal >= 80) {
+        scoreDisplay.className = 'result-score text-green-600 text-4xl font-bold';
+        document.getElementById('result-message-final').textContent = '¡Excelente! Has demostrado un gran conocimiento en seguridad de la información.';
+    } else if (percentageFinal >= 60) {
+        scoreDisplay.className = 'result-score text-yellow-600 text-4xl font-bold';
+        document.getElementById('result-message-final').textContent = 'Buen trabajo. Tienes un conocimiento sólido, pero hay áreas que puedes mejorar.';
+    } else {
+        scoreDisplay.className = 'result-score text-red-600 text-4xl font-bold';
+        document.getElementById('result-message-final').textContent = 'Necesitas reforzar tus conocimientos en seguridad de la información. Te recomendamos revisar el material nuevamente.';
+    }
+    
+    // Mostrar alerta con el resultado
+    Swal.fire({
+        title: 'Examen Finalizado',
+        html: `<p>Tu puntaje: <strong>${finalScoreFinal}/${preguntasSeleccionadasFinal.length} (${percentageFinal.toFixed(1)}%)</strong></p><p>${document.getElementById('result-message-final').textContent}</p>`,
+        icon: percentageFinal >= 80 ? 'success' : (percentageFinal >= 60 ? 'warning' : 'error'),
+        confirmButtonText: 'Aceptar'
+    });
 }
+
 
 // Array de preguntas completo (20 preguntas)
 const quizDataFinal = [
@@ -3156,6 +3360,11 @@ if (downloadPdfBtnFinal) {
         const now = new Date();
         const passed = percentageFinal >= 80;
 
+        if (passed) {
+            const restartExamBtnFinal = document.getElementById('restart-btn-final')
+            restartExamBtnFinal.setAttribute('disabled', true)
+        }
+
         const iconOk = "data:image/png;base64,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"
         const iconNoOk = "data:image/png;base64,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"
         const icon = passed ? iconOk : iconNoOk
@@ -3219,6 +3428,17 @@ if (downloadPdfBtnFinal) {
     
         doc.save(`Resultado_Examen_Final_${employeeId}_${name}-${surname}_${localDate.replace('/','_')}.pdf`);
     });
+}
+
+// Botón para realizar encuesta
+if (btnEncuestaFinal) {
+    btnEncuestaFinal.addEventListener('click', function() {
+        redirigirAEncuesta();
+    });
+}
+
+function redirigirAEncuesta() {
+    window.open("https://forms.office.com/r/qRPMiDE0ab", "_blank");
 }
 
 //--------------- End Examen Final 10 preguntas ------------------------------

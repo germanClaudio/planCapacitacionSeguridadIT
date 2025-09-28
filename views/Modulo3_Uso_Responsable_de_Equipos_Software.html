@@ -6,12 +6,12 @@
         <meta name="description" content="Prodismo">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="../images/Logo_Prodismo.ico">
-        <title>Seguridad de la Información como Compromiso Estratégico</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Seguridad de la Información como Compromiso Estratégico - Modulo 3</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link href="../dist/output.css" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
@@ -49,7 +49,7 @@
                 <p class="text-xl md:text-2xl text-[#0072B2] font-semibold">Es un habilitador clave para la competitividad y la confianza del cliente.</p>
             </section>
 
-            <section id="modulo3-detalle" class="mt-16">
+            <section id="modulo3-detalle" class="text-center mb-12 md:mb-16">
                 <h3 class="section-title">Módulo 3: Uso Responsable de Equipos y Software</h3>
                 <p class="section-subtitle">Este módulo establece las reglas claras de uso de los recursos informáticos, minimizando riesgos de infección, fuga de información y mal uso que podrían comprometer la seguridad de la empresa.</p>
                 
@@ -87,55 +87,85 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <!-- instalar software -->
                     <div class="card flex flex-col items-center">
-                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">¿Puedo instalar este software? Un flujograma de decisión.</h4>
-                        <div class="flow-container">
-                            <div class="flow-node bg-[#0072B2] text-white">
+                        <div class="flow-container relative w-full max-w-2xl mx-auto my-8">
+                            <!-- Nodo inicial -->
+                            <div class="flow-node mx-auto bg-blue-600 text-white p-4 rounded-lg shadow-md text-center mb-8 relative z-10 max-w-xs">
                                 ¿Necesitas instalar software para tu trabajo?
                             </div>
-                            <div class="flow-line"></div>
-                            <div class="flow-arrow"></div>
-                            <div class="flow-node">
+                            
+                            <!-- Línea vertical hacia abajo -->
+                            <div class="absolute left-1/2 transform -translate-x-1/2 h-16 bg-gray-400 w-0.5 top-16 z-0"></div>
+                            
+                            <!-- Flecha hacia abajo -->
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-gray-400 top-24 mt-4 z-0"></div>
+                            
+                            <!-- Segundo nodo -->
+                            <div class="flow-node mx-auto bg-blue-600 text-white p-4 rounded-lg shadow-md text-center mb-8 relative z-10 max-w-xs mt-8">
                                 ¿Está en la lista de software aprobado por IT?
                             </div>
-                            <div class="flow-branch">
-                                <div class="flow-node bg-green-500 text-white">
-                                    SÍ
+                            
+                            <!-- Rama de decisión -->
+                            <div class="flex justify-between relative mb-12 mt-12">
+                                <!-- Opción SÍ (izquierda) -->
+                                <div class="flex flex-col items-center w-2/5">
+                                    <div class="flow-node bg-green-500 text-white p-3 rounded-lg shadow-md text-center mb-4 z-10 w-full">
+                                        SÍ
+                                    </div>
+                                    
+                                    <!-- Línea diagonal hacia abajo-izquierda -->
+                                    <div class="absolute h-0.5 bg-gray-400 w-1/4 top-0 left-1/4 transform -rotate-45 origin-top-left z-0"></div>
+                                    
+                                    <!-- Flecha diagonal hacia abajo-izquierda -->
+                                    <div class="absolute w-0 h-0 border-t-8 border-r-8 border-b-8 border-transparent border-r-gray-400 top-0 left-1/4 transform -rotate-45 -translate-y-1/2 z-0"></div>
+                                    
+                                    <!-- Resultado SÍ -->
+                                    <div class="flow-node bg-green-100 border-2 border-green-500 text-green-800 p-3 rounded-lg shadow-md text-center mt-8 z-10 w-full">
+                                        ¡Adelante!
+                                    </div>
                                 </div>
-                                <div class="flow-node bg-red-500 text-white">
-                                    NO
+                                
+                                <!-- Opción NO (derecha) -->
+                                <div class="flex flex-col items-center w-2/5">
+                                    <div class="flow-node bg-red-500 text-white p-3 rounded-lg shadow-md text-center mb-4 z-10 w-full">
+                                        NO
+                                    </div>
+                                    
+                                    <!-- Línea diagonal hacia abajo-derecha -->
+                                    <div class="absolute h-0.5 bg-gray-400 w-1/4 top-0 right-1/4 transform rotate-45 origin-top-right z-0"></div>
+                                    
+                                    <!-- Flecha diagonal hacia abajo-derecha -->
+                                    <div class="absolute w-0 h-0 border-t-8 border-l-8 border-b-8 border-transparent border-l-gray-400 top-0 right-1/4 transform rotate-45 -translate-y-1/2 z-0"></div>
+                                    
+                                    <!-- Resultado NO -->
+                                    <div class="flow-node bg-red-100 border-2 border-red-500 text-red-800 p-3 rounded-lg shadow-md text-center mt-8 z-10 w-full">
+                                        No lo instales.
+                                    </div>
                                 </div>
                             </div>
-                            <div class="w-full flex justify-between px-10 relative" style="margin-top: -1.5rem;">
-                                <div class="flow-line bg-green-500 h-8"></div>
-                                <div class="flow-line bg-red-500 h-8"></div>
-                            </div>
-                            <div class="w-full flex justify-between px-10 relative">
-                                <div class="flow-arrow border-top-color-green-500" style="margin-top: 0; border-top-color: #22c55e;"></div>
-                                <div class="flow-arrow border-top-color-red-500" style="margin-top: 0; border-top-color: #ef4444;"></div>
-                            </div>
-                            <div class="flow-branch" style="justify-content: space-around;">
-                                <div class="flow-node bg-green-100 border border-green-500">
-                                    ¡Adelante!
-                                </div>
-                                <div class="flow-node bg-red-100 border border-red-500">
-                                    No lo instales.
-                                </div>
-                            </div>
-                            <div class="w-full flex justify-end px-10 relative" style="margin-top: -1.5rem;">
-                                <div class="flow-line bg-red-500 h-8"></div>
-                            </div>
-                            <div class="w-full flex justify-end px-10 relative">
-                                <div class="flow-arrow border-top-color-red-500" style="margin-top: 0; border-top-color: #ef4444;"></div>
-                            </div>
-                            <div class="flow-node bg-[#D55E00] text-white" style="margin-top: -2rem;">
-                                Solicita la aprobación a IT.
+                            
+                            <!-- Línea vertical desde NO hacia abajo -->
+                            <div class="absolute left-3/4 transform -translate-x-1/2 h-24 bg-red-500 w-0.5 top-64 z-0"></div>
+                            
+                            <!-- Línea vertical desde SI hacia abajo -->
+                            <div class="absolute right-3/4 transform -translate-x-1/2 h-24 bg-green-500 w-0.5 top-64 z-0"></div>
+
+                            <!-- Flecha hacia abajo desde NO -->
+                            <div class="absolute left-3/4 transform rotate-45 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-red-500 top-76 z-10"></div>
+                            
+                            <!-- Línea vertical desde NO hacia abajo -->
+                            <div class="absolute left-3/4 transform -translate-x-1/2 h-48 bg-red-500 w-0.5 top-64 z-0"></div>
+
+                            <!-- Acción final -->
+                            <div class="flow-node mx-auto bg-amber-500 text-white p-4 rounded-lg shadow-md text-center mt-16 relative z-10 max-w-xs">
+                                Solicita la aprobación a IT
                             </div>
                         </div>
                     </div>
 
+
                     <!-- BYOD -->
                     <div class="card flex flex-col justify-center">
-                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Política de <b>B</b>ring <b>Y</b>our <b>O</b>wn <b>D</b>ivice</h4>
+                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Política de <b>B</b>ring <b>Y</b>our <b>O</b>wn <b>D</b>evice</h4>
                         <div class="flex items-center space-x-4 mb-4">
                             <span class="text-3xl text-green-600">✅</span>
                             <div class="flex-grow">
@@ -288,11 +318,19 @@
                         <p class="text-lg mt-4 mb-4">Si ya aprobaste el examen <i class="fa-solid fa-thumbs-up fa-lg" style="color: #10b731;"></i>, haz clic aquí e ingresa tu código de acceso al Módulo 4: Accesos Remotos Seguros.</p>
                     </div>
                 </a>
+
+                <!-- Navegación entre módulos -->
+            <div class="flex justify-center mt-12">
+                <a href="./Modulo2_Ciberseguridad.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i> Módulo 2: Ciberseguridad
+                </a>
+            </div>
+
             </section>
 
         </main>
         
-        <footer id="footer-section" class="text-center py-6 mt-12 bg-blue-900">
+        <footer id="footer-section" class="text-center py-6 bg-blue-900">
             <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
                 <p class="text-gray-100">Estratégia de Seguridad de la Información &copy; 2025 - Developed by Germán C. Montalbetti for</p>
                 <img src='../images/logo01-bco.png' title="Logo Prodismo" width="140" height="38">

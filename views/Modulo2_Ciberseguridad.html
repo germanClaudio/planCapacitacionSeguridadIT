@@ -1,194 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Prodismo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="../images/Logo_Prodismo.ico">
-    <title>2-Seguridad de la Información como Compromiso Estratégico</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Seguridad de la Información como Compromiso Estratégico - Módulo 2</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet"  type="text/css" href="../css/styles.css">
+    <link href="../dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
 </head>
 
-<body class="text-gray-800">
+<body class="font-inter bg-gray-50 text-gray-800 antialiased">
 
-    <header class="bg-white shadow-md sticky top-0 z-10">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
+    <header class="bg-white shadow-lg sticky top-0 z-50 border-b-2 border-blue-200">
+        <div class="container mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+            <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" class="w-40 sm:w-48 h-auto">
             
-            <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
+            <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-blue-900 text-center flex-grow mx-2 sm:mx-4 leading-tight">
                 Seguridad de la Información: Un Compromiso Estratégico
             </h1>
 
-            <a href="./Modulo1_Rotación_de_Contrasenas.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 mr-4"
-                title="Ir al módulo 1 - Rotación de contraseñas">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            
-            <a href="./Modulo3_Uso_Responsable_de_Equipos_Software.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
-                title="Ir al módulo 3 - Uso Responsable de Equipos y Softwares">
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <a href="./Modulo1_Rotación_de_Contrasenas.html" class="text-xl sm:text-2xl text-blue-900 hover:text-blue-700 transition-colors duration-300 transform hover:scale-110 mr-4"
+                    title="Ir al módulo 1 - Rotación de contraseñas">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                
+                <a href="./Modulo3_Uso_Responsable_de_Equipos_Software.html" class="text-xl sm:text-2xl text-blue-900 hover:text-blue-700 transition-colors duration-300 transform hover:scale-110"
+                    title="Ir al módulo 3 - Uso Responsable de Equipos y Softwares">
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto p-6 md:p-12">
+    <main class="container mx-auto px-4 sm:px-6 py-6 md:py-8 lg:py-12">
 
-        <section class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-[#00446A] mb-4">La seguridad no es un área técnica.</h2>
-            <p class="text-xl md:text-2xl text-[#0072B2] font-semibold">Es un habilitador clave para la competitividad y la confianza del cliente.</p>
+        <section class="text-center mb-12 md:mb-16 lg:mb-20">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-blue-900 mb-4 leading-tight">
+                La seguridad no es un área técnica.
+            </h2>
+            <p class="text-lg sm:text-xl md:text-2xl text-blue-700 font-semibold max-w-4xl mx-auto">
+                Es un habilitador clave para la competitividad y la confianza del cliente.
+            </p>
         </section>
 
-        <!-- style="display: none" -->
-        <section id="impacto" class="mb-16" style="display: none">
-            <h3 class="section-title">El Costo Real de un Incidente de Seguridad</h3>
-            <p class="section-subtitle">Un incidente no es solo un problema técnico; es una crisis de negocio con consecuencias financieras y reputacionales devastadoras. Los datos muestran que el sector manufacturero es uno de los más atacados, y los costos continúan en aumento.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Ataques al Sector Manufacturero (Evolución)</h4>
-                    <p class="text-center text-sm text-gray-500 mb-2">Fuente: IBM X-Force Threat Intelligence Index</p>
-                    <div class="chart-container">
-                        <canvas id="ataquesChart"></canvas>
-                    </div>
-                    <p class="mt-4 text-center">Los ataques al sector industrial, incluyendo ransomware y robo de propiedad intelectual, han mostrado un aumento constante, convirtiéndonos en un blanco principal.</p>
-                </div>
-                <div class="kpi-card flex flex-col justify-center">
-                    <p class="kpi-number">$4.45M</p>
-                    <p class="kpi-label">Costo Promedio Global de una Fuga de Datos en 2024</p>
-                    <p class="mt-4 text-sm text-gray-300">Este costo incluye la detección, la respuesta, la pérdida de negocio y las notificaciones post-incidente.</p>
-                </div>
-            </div>
-        </section>
-        <section id="rol" class="mb-16" style="display: none">
-            <h3 class="section-title">El Factor Humano: La Primera Línea de Defensa</h3>
-            <p class="section-subtitle">La tecnología es fundamental, pero las estadísticas demuestran que el eslabón humano sigue siendo el más explotado por los atacantes. La seguridad es, y siempre será, una responsabilidad compartida por cada miembro de la organización.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="card">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Origen de las Fugas de Datos</h4>
-                    <div class="chart-container">
-                        <canvas id="humanFactorChart"></canvas>
-                    </div>
-                    <p class="mt-4 text-center">Un alto porcentaje de los incidentes de seguridad tienen su origen, ya sea intencional o accidental, en un error humano.</p>
-                </div>
-                <div class="card">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4">Responsabilidades de Todos:</h4>
-                    <ul class="list-disc list-inside space-y-3 text-lg">
-                        <li><span class="font-bold">Manejo de Contraseñas:</span> Utilizar claves robustas y no reutilizarlas.</li>
-                        <li><span class="font-bold">Detección de Phishing:</span> Desconfiar de correos electrónicos no solicitados y enlaces sospechosos.</li>
-                        <li><span class="font-bold">Resguardo Físico:</span> No dejar documentos sensibles a la vista y asegurar los equipos de trabajo.</li>
-                        <li><span class="font-bold">Reporte de Incidentes:</span> Informar inmediatamente sobre cualquier actividad anómala.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="modulo2-detalle" class="mt-16">
-            <h3 class="section-title">Módulo 2: Ciberseguridad y Phishing</h3>
-            <p class="section-subtitle">Aprender a identificar y reportar amenazas es la primera línea de defensa. Este módulo nos capacitará para reconocer los ataques de ingeniería social que buscan engañarnos para robar información.</p>
+        <section id="modulo2-detalle" class="text-center mb-8 md:mb-12 lg:mb-16">
+            <h3 class="section-title text-2xl font-bold text-blue-900 mb-3">Módulo 2: Ciberseguridad y Phishing</h3>
+            <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                Aprender a identificar y reportar amenazas es la primera línea de defensa. Este módulo nos capacitará para reconocer los ataques de ingeniería social que buscan engañarnos para robar información.
+            </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="card flex flex-col justify-center">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Tipos de Ataques más Comunes</h4>
-                    <p class="text-center text-sm text-gray-500 mb-2">Phishing, smishing, vishing y otras amenazas cibernéticas.</p>
-                    <div class="chart-container">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 text-center group hover-lift">
+                    <h4 class="text-xl font-bold text-blue-900 mb-6">Tipos de Ataques más Comunes</h4>
+                    <p class="text-gray-600 text-sm mb-4">Phishing, smishing, vishing y otras amenazas cibernéticas.</p>
+                    <div class="chart-container bg-gray-50 rounded-lg p-4 mb-4">
                         <canvas id="phishingChart"></canvas>
                     </div>
-                    <p class="mt-4 text-center">El ataque más frecuente sigue siendo el phishing por correo electrónico, pero otras formas de ingeniería social como el vishing (llamadas) y el smishing (SMS) también son un riesgo creciente.</p>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        El ataque más frecuente sigue siendo el phishing por correo electrónico, pero otras formas de ingeniería social como el vishing (llamadas) y el smishing (SMS) también son un riesgo creciente.
+                    </p>
                 </div>
-                <div class="card flex flex-col">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Cómo Reconocer un Correo Falso</h4>
-                    <p class="text-center text-sm text-gray-500 mb-4">Compara las características de un correo legítimo y uno malicioso.</p>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 group hover-lift">
+                    <h4 class="text-xl font-bold text-blue-900 mb-6 text-center">Cómo Reconocer un Correo Falso</h4>
+                    <p class="text-gray-600 text-sm text-center mb-6">Compara las características de un correo legítimo y uno malicioso.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-green-50 p-4 rounded-lg flex flex-col">
-                            <h5 class="font-bold text-green-700 mb-2">Correo Real</h5>
+                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h5 class="font-bold text-green-700 mb-3 text-lg">Correo Real</h5>
                             <ul class="text-sm space-y-2 text-gray-700">
-                                <li>📧 Remitente: <span class="font-semibold text-gray-900">itprodismo@prodismo.com</span></li>
-                                <li>🌐 Enlaces: <span class="font-semibold text-gray-900">Apuntan a dominios oficiales.</span></li>
-                                <li>✍️ Gramática: <span class="font-semibold text-gray-900">Perfecta y profesional.</span></li>
-                                <li>🚫 Urgencia: <span class="font-semibold text-gray-900">No hay presión.</span></li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2 mt-1">📧</span>
+                                    <span><strong>Remitente:</strong> itprodismo@prodismo.com</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2 mt-1">🌐</span>
+                                    <span><strong>Enlaces:</strong> Apuntan a dominios oficiales</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2 mt-1">✍️</span>
+                                    <span><strong>Gramática:</strong> Perfecta y profesional</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2 mt-1">🚫</span>
+                                    <span><strong>Urgencia:</strong> No hay presión</span>
+                                </li>
                             </ul>
                         </div>
-                        <div class="bg-red-50 p-4 rounded-lg flex flex-col">
-                            <h5 class="font-bold text-red-700 mb-2">Correo Falso</h5>
+                        <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                            <h5 class="font-bold text-red-700 mb-3 text-lg">Correo Falso</h5>
                             <ul class="text-sm space-y-2 text-gray-700">
-                                <li>📧 Remitente: <span class="font-semibold text-red-900">itprodism0@prodismo.com</span> (con un cero)</li>
-                                <li>🌐 Enlaces: <span class="font-semibold text-red-900">URL sospechosas o acortadas.</span></li>
-                                <li>✍️ Gramática: <span class="font-semibold text-red-900">Errores de escritura o formato.</span></li>
-                                <li>🚨 Urgencia: <span class="font-semibold text-red-900">Petición de acción inmediata.</span></li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2 mt-1">📧</span>
+                                    <span><strong>Remitente:</strong> itprodismo@prodism0.com (con un cero)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2 mt-1">🌐</span>
+                                    <span><strong>Enlaces:</strong> URL sospechosas o acortadas</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2 mt-1">✍️</span>
+                                    <span><strong>Gramática:</strong> Errores de escritura o formato</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-red-600 mr-2 mt-1">🚨</span>
+                                    <span><strong>Urgencia:</strong> Petición de acción inmediata</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card p-6 mb-12">
-                <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Acciones para Protegernos</h4>
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 md:mb-12 group hover-lift">
+                <h4 class="text-xl md:text-2xl font-bold text-blue-900 mb-6 text-center">Acciones para Protegernos</h4>
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 md:space-x-8">
-                    <div class="text-center">
-                        <div class="text-4xl text-[#0072B2] mb-2">🛑</div>
-                        <h5 class="font-bold">No Hagas Clic</h5>
-                        <p class="text-sm text-gray-600">No interactúes con enlaces o archivos adjuntos sospechosos.</p>
+                    <div class="text-center group">
+                        <div class="text-5xl text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300">🛑</div>
+                        <h5 class="font-bold text-blue-900 text-lg mb-3">No Hagas Clic</h5>
+                        <p class="text-gray-600 text-sm max-w-xs">No interactúes con enlaces o archivos adjuntos sospechosos.</p>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl text-[#009E73] mb-2">➡️</div>
-                        <h5 class="font-bold">Reporta Inmediatamente</h5>
-                        <p class="text-sm text-gray-600">Usa el botón 🛡️ "Informar Phishing" o reenvía a soporte.</p>
+                    <div class="text-center group">
+                        <div class="text-5xl text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300">➡️</div>
+                        <h5 class="font-bold text-green-900 text-lg mb-3">Reporta Inmediatamente</h5>
+                        <p class="text-gray-600 text-sm max-w-xs">Usa el botón 🛡️ "Informar Phishing" o reenvía a soporte.</p>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl text-[#D55E00] mb-2">🗣️</div>
-                        <h5 class="font-bold">Comunícate</h5>
-                        <p class="text-sm text-gray-600">Verifica la solicitud por otro medio si tienes dudas.</p>
+                    <div class="text-center group">
+                        <div class="text-5xl text-orange-600 mb-4 group-hover:scale-110 transition-transform duration-300">🗣️</div>
+                        <h5 class="font-bold text-orange-900 text-lg mb-3">Comunícate</h5>
+                        <p class="text-gray-600 text-sm max-w-xs">Verifica la solicitud por otro medio si tienes dudas.</p>
                     </div>
                 </div>
             </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 group hover-lift">
+                <h4 class="text-xl md:text-2xl font-bold text-blue-900 mb-6 text-center">Información del Módulo</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <div class="text-center group hover-lift" title="Ver video">
+                        <a href="https://youtu.be/S8xaXEqzckk" target="_blank" class="block">
+                            <div class="text-5xl text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300">🎬</div>
+                            <h5 class="font-bold text-blue-900 text-lg mb-3">Video Phishing</h5>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Video Phishing: ¿Por qué no pasa de moda y cómo protegerse?
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="text-center group hover-lift" id="guia-pdf" title="Descargar Guía de Identificación de Phishing para Usuarios">
+                        <div class="text-5xl text-green-600 mb-4 group-hover:scale-110 transition-transform duration-300">📄</div>
+                        <h5 class="font-bold text-blue-900 text-lg mb-3">Guía PDF</h5>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Material de apoyo para identificar Phishing.
+                        </p>
+                    </div>
+
+                    <div class="text-center group hover-lift" id="anchorMod2" title="Evaluación de correos">
+                        <a href="./Modulo2_b_Mails_fraudulentos.html" class="block">
+                            <div class="text-5xl text-orange-600 mb-4 group-hover:scale-110 transition-transform duration-300">📧</div>
+                            <h5 class="font-bold text-blue-900 text-lg mb-3">Mails legítimos o fraudulentos?</h5>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Se mostrarán 6 correos, vote cuáles son legítimos y cuáles son phishing.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación entre módulos -->
+            <div class="flex justify-between mt-12">
+                <a href="./Modulo1_Rotación_de_Contrasenas.html" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i> Módulo 1: Rotación Constraseñas
+                </a>
+                <a href="./Modulo3_Uso_Responsable_de_Equipos_Software.html" class="btn btn-primary">
+                    Módulo 3: Uso Responsable <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
         </section>
-
-        <div class="card p-6 mb-12">
-            <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Información del Módulo</h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div>
-                    <a href="https://youtu.be/S8xaXEqzckk" title="Ver video">
-                        <div class="text-4xl text-center text-[#0072B2] mb-2">🎬</div>
-                        <h5 class="font-bold text-center">Video Pishing</h5>
-                        <p class="text-center text-sm">Video Phishing: ¿Por qué no pasa de moda y cómo protegerse?.</p>
-                    </a>
-                </div>
-
-                <div>
-                    <div id="guia-pdf" title="Descargar Guía de Identificación de Phishing para Usuarios" class="text-4xl text-center text-[#009E73] mb-2">📄</div>
-                    <h5 class="font-bold text-center">Guía PDF</h5>
-                    <p class="text-center text-sm">Material de apoyo para identificar Phishing.</p>
-                </div>
-
-                <div id="anchorMod2">
-                    <a href="./Modulo2_b_Mails_fraudulentos.html">
-                        <div class="text-4xl text-center text-[#0072B2] mb-2">📧</div>
-                        <h5 class="font-bold text-center">Mails legítimos o fraudulentos?</h5>
-                        <p class="text-center text-sm">Se mostrarán 6 correos, vote cuáles son legítimos y cuáles son phishing.</p>
-                    </a>
-                </div>
-            </div>
-        </div>
 
     </main>
     
-    <footer class="text-center py-6 mt-12 bg-blue-900">
-        <div class="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
-            <p class="text-gray-100">Estratégia de Seguridad de la Información &copy; 2025 - Developed by Germán C. Montalbetti for</p>
-            <img src='../images/logo01-bco.png' title="Logo Prodismo" width="140" height="38">
+    <footer class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-center">
+                <p class="text-gray-200 text-sm sm:text-base">
+                    Estratégia de Seguridad de la Información &copy; 2025 - Developed by Germán C. Montalbetti for
+                </p>
+                <img src='../images/logo01-bco.png' title="Logo Prodismo" class="h-8 sm:h-10 w-auto" alt="Prodismo">
+            </div>
         </div>
     </footer>
 
     <script type="text/javascript" src="../js/scripts.js"></script>
-
 </body>
 </html>

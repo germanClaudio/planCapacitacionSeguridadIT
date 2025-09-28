@@ -6,12 +6,12 @@
         <meta name="description" content="Prodismo">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="../images/Logo_Prodismo.ico">
-        <title>Seguridad de la Información como Compromiso Estratégico</title>
-        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Seguridad de la Información como Compromiso Estratégico - Modulo 6</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+        <link href="../dist/output.css" rel="stylesheet">
         <link rel="stylesheet"  type="text/css" href="../css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css">
@@ -28,11 +28,10 @@
                     Seguridad de la Información: Un Compromiso Estratégico
                 </h1>
                 
-                <a href="./Modulo5_Gestión_Riesgos_de_Seguridad.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
+                <a href="./Modulo5_Gestion_Riesgos_de_Seguridad.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
                     title="Ir al módulo 5 - Gestión Riesgos de Seguridad">
                     <i class="fas fa-arrow-left"></i>
                 </a>
-
             </div>
         </header>
 
@@ -47,126 +46,129 @@
                 <h3 class="section-title">Módulo 6: Temas Adicionales sobre Seguridad de la Información</h3>
                 <p class="section-subtitle">A medida que nuestra operación evoluciona, la protección de la información requiere un enfoque más especializado. Estos temas cubren las políticas y prácticas críticas para entornos de fabricación, ingeniería y manejo de datos confidenciales de clientes.</p>
 
-                <div class="card p-6 mb-8">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Protección en Entornos de Fabricación (OT/ICS)</h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Protección en Entornos de Fabricación -->
+                <div class="card p-8 mb-12">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-6 text-center">Protección en Entornos de Fabricación (OT/ICS)</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                         <div>
-                            <ul class="list-disc list-inside space-y-2">
-                                <li><span class="font-bold">Sistemas SCADA/PLC:</span> La seguridad en la planta es tan crítica como la seguridad en la oficina. </li>
-                                <li><span class="font-bold">Prohibido a Internet:</span> Los equipos de producción (SCADA/PLC) <strong>nunca deben conectarse directamente a Internet</strong>. Esto los expone a ciberataques que pueden detener o dañar la operación.</li>
-                            </ul>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="text-blue-600 text-xl mt-1">🏭</div>
+                                    <div>
+                                        <p class="font-semibold">Sistemas SCADA/PLC:</p>
+                                        <p class="text-gray-600">La seguridad en la planta es tan crítica como la seguridad en la oficina.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="text-red-600 text-xl mt-1">🚫</div>
+                                    <div>
+                                        <p class="font-semibold">Prohibido a Internet:</p>
+                                        <p class="text-gray-600">Los equipos de producción <strong>nunca deben conectarse directamente a Internet</strong>.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <p class="text-sm font-semibold text-[#00446A]">Un ataque a un PLC podría comprometer la calidad de un producto o, en el peor de los casos, causar un accidente.</p>
+                        <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                            <div class="text-4xl text-blue-600 mb-3 text-center">⚠️</div>
+                            <p class="text-sm font-semibold text-blue-800 text-center">Un ataque a un PLC podría comprometer la calidad de un producto o, en el peor de los casos, causar un accidente.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="card p-6 mb-8">
-                    <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Clasificación de la Información</h4>
-                    <p class="text-sm text-center text-gray-600 mb-4">Cada documento que creamos tiene un nivel de sensibilidad. Es nuestra responsabilidad asignarle la etiqueta correcta para asegurar su protección adecuada.</p>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center font-bold">
-                
-                        <div class="p-3 bg-green-200 rounded-lg flex flex-col items-center">
-                            <div class="flex justify-between items-center w-full">
-                                <span>Público</span>
-                                <button class="toggle-btn text-gray-700 hover:text-gray-900 transition-transform duration-500 transform rotate-0">
-                                    <span class="text-2xl">▼</span>
+                <!-- Clasificación de la Información -->
+                <div class="card p-8 mb-12">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-6 text-center">Clasificación de la Información</h4>
+                    <p class="text-center text-gray-600 mb-8">Cada documento que creamos tiene un nivel de sensibilidad. Es nuestra responsabilidad asignarle la etiqueta correcta para asegurar su protección adecuada.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Público -->
+                        <div class="classification-card p-6 bg-green-100 rounded-lg text-center" onclick="toggleContent(this)">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-bold text-green-800 text-lg">Público</span>
+                                <button class="toggle-btn text-green-700">
+                                    <i class="fas fa-chevron-down"></i>
                                 </button>
                             </div>
-                            <div class="content mt-2 text-left hidden w-full text-sm">
-                                <p><strong>Nivel de Clasificación:</strong> PÚBLICO</p>
-                                <br>
-                                <p><strong>Descripción:</strong> Información aprobada para divulgación pública. Su divulgación no tiene impacto.</p>
-                                <br>
+                            <div class="content hidden text-left text-sm space-y-3">
+                                <p><strong>Descripción:</strong> Información aprobada para divulgación pública.</p>
                                 <p><strong>Ejemplos:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
                                     <li>Comunicados de prensa</li>
                                     <li>Folletos de marketing</li>
                                     <li>Información disponible en el sitio web corporativo</li>
                                 </ul>
-                                <br>
-                                <p><strong>Controles Mínimos Requeridos:</strong></p>
+                                <p><strong>Controles:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
                                     <li>Sin controles especiales de acceso.</li>
                                     <li>Puede ser libremente distribuida.</li>
                                 </ul>
                             </div>
                         </div>
-                
-                        <div class="p-3 bg-yellow-200 rounded-lg flex flex-col items-center">
-                            <div class="flex justify-between items-center w-full">
-                                <span>Interno</span>
-                                <button class="toggle-btn text-gray-700 hover:text-gray-900 transition-transform duration-500 transform rotate-0">
-                                    <span class="text-2xl">▼</span>
+
+                        <!-- Interno -->
+                        <div class="classification-card p-6 bg-yellow-100 rounded-lg text-center" onclick="toggleContent(this)">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-bold text-yellow-800 text-lg">Interno</span>
+                                <button class="toggle-btn text-yellow-700">
+                                    <i class="fas fa-chevron-down"></i>
                                 </button>
                             </div>
-                            <div class="content mt-2 text-left hidden w-full text-sm">
-                                <p><strong>Nivel de Clasificación:</strong> INTERNO</p>
-                                <br>
-                                <p><strong>Descripción:</strong> Información para uso interno. Su divulgación no autorizada causaría un impacto limitado.</p>
-                                <br>
+                            <div class="content hidden text-left text-sm space-y-3">
+                                <p><strong>Descripción:</strong> Información para uso interno de la empresa.</p>
                                 <p><strong>Ejemplos:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
-                                    <li>Manuales de procedimientos internos</li>
+                                    <li>Manuales de procedimientos</li>
                                     <li>Organigramas</li>
                                     <li>Comunicados internos</li>
                                     <li>Políticas de la empresa</li>
                                 </ul>
-                                <br>
-                                <p><strong>Controles Mínimos Requeridos:</strong></p>
+                                <p><strong>Controles:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
-                                    <li>Acceso restringido a personal de la empresa.</li>
+                                    <li>Acceso restringido a personal.</li>
                                     <li>No requiere cifrado por defecto.</li>
                                     <li>No debe ser divulgada al público.</li>
                                 </ul>
                             </div>
                         </div>
-                
-                        <div class="p-3 bg-orange-200 rounded-lg flex flex-col items-center">
-                            <div class="flex justify-between items-center w-full">
-                                <span>Confidencial</span>
-                                <button class="toggle-btn text-gray-700 hover:text-gray-900 transition-transform duration-500 transform rotate-0">
-                                    <span class="text-2xl">▼</span>
+
+                        <!-- Confidencial -->
+                        <div class="classification-card p-6 bg-orange-100 rounded-lg text-center" onclick="toggleContent(this)">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-bold text-orange-800 text-lg">Confidencial</span>
+                                <button class="toggle-btn text-orange-700">
+                                    <i class="fas fa-chevron-down"></i>
                                 </button>
                             </div>
-                            <div class="content mt-2 text-left hidden w-full text-sm">
-                                <p><strong>Nivel de Clasificación:</strong> CONFIDENCIAL</p>
-                                <br>
-                                <p><strong>Descripción:</strong> Información altamente sensible. Su divulgación no autorizada causaría un impacto severo o catastrófico para la organización, clientes o socios.</p>
-                                <br>
+                            <div class="content hidden text-left text-sm space-y-3">
+                                <p><strong>Descripción:</strong> Información altamente sensible. Su divulgación no autorizada causaría un impacto severo para la organización o clientes.</p>
                                 <p><strong>Ejemplos:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
                                     <li>Planos o diseño 3D</li>
-                                    <li>Fórmulas patentadas</li>
                                     <li>Claves de producto</li>
-                                    <li>Acuerdos de confidencialidad (NDA)</li>
+                                    <li>Acuerdos de confidencialidad</li>
                                     <li>Resultados de auditorías críticas</li>
                                 </ul>
-                                <br>
-                                <p><strong>Controles Mínimos Requeridos:</strong></p>
+                                <p><strong>Controles:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
                                     <li>Cifrado fuerte en reposo y tránsito.</li>
                                     <li>Estricto control de acceso (Mínimo Privilegio).</li>
                                     <li>Almacenamiento en repositorios seguros.</li>
-                                    <li>Registro detallado de accesos (logging).</li>
+                                    <li>Registro detallado de accesos.</li>
                                     <li>Etiquetado claro.</li>
                                 </ul>
                             </div>
                         </div>
-                
-                        <div class="p-3 bg-red-200 rounded-lg flex flex-col items-center">
-                            <div class="flex justify-between items-center w-full">
-                                <span>Restringido</span>
-                                <button class="toggle-btn text-gray-700 hover:text-gray-900 transition-transform duration-500 transform rotate-0">
-                                    <span class="text-2xl">▼</span>
+
+                        <!-- Restringido -->
+                        <div class="classification-card p-6 bg-red-100 rounded-lg text-center" onclick="toggleContent(this)">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-bold text-red-800 text-lg">Restringido</span>
+                                <button class="toggle-btn text-red-700">
+                                    <i class="fas fa-chevron-down"></i>
                                 </button>
                             </div>
-                            <div class="content mt-2 text-left hidden w-full text-sm">
-                                <p><strong>Nivel de Clasificación:</strong> RESTRINGIDO</p>
-                                <br>
-                                <p><strong>Descripción:</strong> Información sensible para uso interno. Su divulgación no autorizada causaría un impacto significativo.</p>
-                                <br>
+                            <div class="content hidden text-left text-sm space-y-3">
+                                <p><strong>Descripción:</strong> Información sensible para uso interno. Su divulgación no autorizada causaría un impacto significativo para la organización.</p>
                                 <p><strong>Ejemplos:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
                                     <li>Informes financieros internos</li>
@@ -174,179 +176,141 @@
                                     <li>Datos de empleados</li>
                                     <li>Información de proveedores clave</li>
                                 </ul>
-                                <br>
-                                <p><strong>Controles Mínimos Requeridos:</strong></p>
+                                <p><strong>Controles:</strong></p>
                                 <ul class="list-disc list-inside ml-4 font-normal">
                                     <li>Cifrado recomendado.</li>
                                     <li>Control de acceso basado en roles.</li>
                                     <li>No debe ser compartido externamente sin autorización.</li>
-                                    <li>Marca de agua "Restringido" en documentos.</li>
+                                    <li>Marca de agua "Restringido" en documentos impresos.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <p class="text-sm text-center text-gray-600 mt-4">Utilizaremos las etiquetas de sensibilidad integradas en Microsoft 365 para clasificar documentos como mails, planos de clientes y diseños 3D o piezas de prototipos.</p>
+                    
+                    <p class="text-sm text-center text-gray-600 mt-6">Utilizaremos las <strong>etiquetas de sensibilidad integradas en Microsoft 365</strong> para clasificar documentos como <strong>mails, planos de clientes y diseños 3D o piezas de prototipos</strong>.</p>
                 </div>
-                
-                <div class="flex-grow container mx-auto px-4 py-8">
-                    <div class="w-full mx-auto">
-                        <div class="card p-8 mb-8">
-                            <h2 class="text-2xl font-bold text-[#00446A] mb-6 text-center">Política de Escritorio y Pantalla Limpios</h2>
-                            
-                            <div class="grid grid-cols-1 gap-6">
-                                <div>
-                                    <ul class="space-y-4">
-                                        <li class="policy-item">
-                                            <span class="font-bold text-[#00446A]">Sin Papelitos a la Vista:</span> 
-                                            No dejes notas con contraseñas ni información sensible en tu escritorio.
-                                        </li>
-                                        <li class="policy-item">
-                                            <span class="font-bold text-[#00446A]">Bloquea tu Pantalla:</span> 
-                                            No dejes tu sesión abierta. Una pantalla bloqueada evita que la información sea vista por personas no autorizadas, como visitantes.
-                                        </li>
-                                        <li class="policy-item">
-                                            <span class="font-bold text-[#00446A]">Confidencialidad:</span> 
-                                            Si te alejas de tu estación, tu escritorio y pantalla deben estar completamente libres de información sensible.
-                                        </li>
-                                        <!-- Nuevos puntos agregados -->
-                                        <li class="policy-item">
-                                            <span class="font-bold text-[#00446A]">Gestión de Documentos:</span> 
-                                            Todos los documentos físicos que contengan información confidencial deben almacenarse en archivadores cerrados con llave cuando no estén en uso.
-                                        </li>
-                                        <li class="policy-item">
-                                            <span class="font-bold text-[#00446A]">Dispositivos de Almacenamiento:</span> 
-                                            Los dispositivos de almacenamiento extraíbles (USB, discos duros externos) que contengan información sensible deben guardarse bajo llave cuando no se utilicen.
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="flex justify-center mt-6">
-                                    <button id="policyBtnConfirm" class="btn-primary-mod6 flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                        </svg>
-                                        Confirmar Conocimiento de la Política
-                                    </button>
-                                </div>
-                            </div>
+
+                <!-- Política de Escritorio y Pantalla Limpios -->
+                <div class="card p-8 mb-12">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-6 text-center">Política de Escritorio y Pantalla Limpios</h4>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="policy-item">
+                            <span class="font-bold text-[#00446A]">Sin Papelitos a la Vista:</span> 
+                            No dejes notas con contraseñas ni información sensible en tu escritorio.
                         </div>
-                        
-                        <!-- Información adicional -->
-                        <div class="card p-8 mb-8">
-                            <h3 class="text-xl font-bold text-[#00446A] mb-4">Información Adicional</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                                    <h4 class="font-bold text-[#00446A] mb-2">¿Por qué es importante?</h4>
-                                    <p class="text-gray-700">Mantener un escritorio y pantalla limpios previene el acceso no autorizado a información confidencial, reduciendo el riesgo de fugas de datos y cumpliendo con regulaciones de protección de datos.</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                                    <h4 class="font-bold text-[#00446A] mb-2">Consecuencias del Incumplimiento</h4>
-                                    <p class="text-gray-700">El incumplimiento de esta política puede resultar en sanciones disciplinarias, según la gravedad de la infracción y las políticas internas de la organización.</p>
-                                </div>
+                        <div class="policy-item">
+                            <span class="font-bold text-[#00446A]">Bloquea tu Pantalla:</span> 
+                            No dejes tu sesión abierta. Usa <kbd class="px-2 py-1 bg-gray-200 rounded"><i class="fa-brands fa-windows"></i> + L</kbd> o <kbd class="px-2 py-1 bg-gray-200 rounded">Cmd + Ctrl + Q</kbd> cuando te ausentes.
+                        </div>
+                        <div class="policy-item">
+                            <span class="font-bold text-[#00446A]">Gestión de Documentos:</span> 
+                            Documentos físicos confidenciales deben almacenarse en archivadores cerrados.
+                        </div>
+                        <div class="policy-item">
+                            <span class="font-bold text-[#00446A]">Dispositivos de Almacenamiento:</span> 
+                            USB y discos externos con información sensible deben guardarse bajo llave.
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <button id="policyBtnConfirm" class="btn btn-primary">
+                            <i class="fas fa-check-circle mr-2"></i>Confirmar Conocimiento de la Política
+                        </button>
+                    </div>
+                    
+                    <!-- Información adicional -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-bold text-[#00446A] mb-2">¿Por qué es importante?</h5>
+                            <p class="text-sm text-gray-700">Previene el acceso no autorizado a información confidencial y reduce el riesgo de fugas de datos.</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h5 class="font-bold text-[#00446A] mb-2">Consecuencias del Incumplimiento</h5>
+                            <p class="text-sm text-gray-700">Puede resultar en sanciones disciplinarias según la gravedad de la infracción.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cadena de Custodia de la Información -->
+                <div class="card p-8 mb-12">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-4 text-center">Cadena de Custodia de la Información</h4>
+                    <p class="text-center text-gray-600 mb-6">Especialmente en Ingeniería y Proyectos, es vital documentar quién, cuándo y cómo se accede o se transfiere la información de los clientes.</p>
+                    
+                    <div class="text-6xl text-center text-[#00446A] mb-6">🔗</div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="custody-item">
+                            <span class="font-bold text-[#00446A]">Registro de acceso:</span> 
+                            Documentación detallada de quién, cuándo y por qué se accede a planos y documentos.
+                        </div>
+                        <div class="custody-item">
+                            <span class="font-bold text-[#00446A]">Autorización de transferencia:</span> 
+                            Proceso formal para la transferencia de datos a terceros.
+                        </div>
+                        <div class="custody-item">
+                            <span class="font-bold text-[#00446A]">Sistema de trazabilidad:</span> 
+                            Herramientas que registran automáticamente todos los movimientos de información.
+                        </div>
+                        <div class="custody-item">
+                            <span class="font-bold text-[#00446A]">Revisiones periódicas:</span> 
+                            Auditorías programadas para verificar la integridad.
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mb-8">
+                        <button id="custodyBtn" class="btn btn-primary">
+                            <i class="fas fa-check-circle mr-2"></i>Confirmar Conocimiento de la Política
+                        </button>
+                    </div>
+
+                    <!-- Proceso de Cadena de Custodia -->
+                    <div class="mt-8">
+                        <h5 class="font-bold text-[#00446A] mb-6 text-center">Proceso de Cadena de Custodia</h5>
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <p class="text-sm font-medium">Creación/Recepción</p>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <p class="text-sm font-medium">Registro Inicial</p>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <p class="text-sm font-medium">Acceso Controlado</p>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">4</div>
+                                <p class="text-sm font-medium">Transferencia Segura</p>
+                            </div>
+                            <div class="process-step">
+                                <div class="step-number">5</div>
+                                <p class="text-sm font-medium">Archivo/Disposición</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Contenido  -->
-                <div class="flex-grow container mx-auto px-4 py-8">
-                    <div class="w-full mx-auto">
-                        <div class="card p-8 mb-8">
-                            <h2 class="text-2xl font-bold text-[#2d7d5a] mb-2 text-center">Cadena de Custodia de la Información</h2>
-                            <p class="text-center text-gray-600 mb-6">Especialmente en Ingeniería y Proyectos, es vital documentar quién, cuándo y cómo se accede o se transfiere la información de los clientes.<br>Esto es fundamental para la auditoría y la rendición de cuentas.</p>
-                            
-                            <div class="icon-container text-white text-4xl mb-6">
-                                🔗
-                            </div>
-                            
-                            <div class="info-box p-4 rounded-lg text-gray-700 mb-6">
-                                <p class="font-bold text-[#2d7d5a]">¿Qué incluye?</p>
-                                <ul class="space-y-2 mt-2">
-                                    <li class="custody-item">
-                                        <span class="font-bold text-[#2d7d5a]">Registro de acceso:</span> 
-                                        Documentación detallada de quién, cuándo y por qué se accede a planos y documentos de clientes.
-                                    </li>
-                                    <li class="custody-item">
-                                        <span class="font-bold text-[#2d7d5a]">Autorización de transferencia:</span> 
-                                        Proceso formal para la transferencia de datos a terceros, con registro de aprobaciones.
-                                    </li>
-                                    <li class="custody-item">
-                                        <span class="font-bold text-[#2d7d5a]">Notificación de incidentes:</span> 
-                                        Protocolo para la notificación inmediata de cualquier acceso no autorizado o brecha de seguridad.
-                                    </li>
-                                    <!-- Nuevos puntos agregados -->
-                                    <li class="custody-item">
-                                        <span class="font-bold text-[#2d7d5a]">Sistema de trazabilidad:</span> 
-                                        Implementación de herramientas que registren automáticamente todos los movimientos de información sensible.
-                                    </li>
-                                    <li class="custody-item">
-                                        <span class="font-bold text-[#2d7d5a]">Revisiones periódicas:</span> 
-                                        Auditorías programadas para verificar la integridad de la cadena de custodia y detectar anomalías.
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <div class="flex justify-center mt-6">
-                                <button id="custodyBtn" class="btn-primary-mod6 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                                    </svg>
-                                    Confirmar Conocimiento de la Política
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Información adicional -->
-                        <div class="card p-8">
-                            <h3 class="text-xl font-bold text-[#2d7d5a] mb-4">Información Adicional</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                                    <h4 class="font-bold text-[#2d7d5a] mb-2">¿Por qué es importante?</h4>
-                                    <p class="text-gray-700">La cadena de custodia garantiza la integridad y confidencialidad de la información, especialmente en proyectos de ingeniería donde los datos son críticos. Permite rastrear cualquier acceso o modificación, esencial para cumplir con normativas y mantener la confianza del cliente.</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                                    <h4 class="font-bold text-[#2d7d5a] mb-2">Consecuencias del Incumplimiento</h4>
-                                    <p class="text-gray-700">La falta de una cadena de custodia adecuada puede resultar en pérdida de información crítica, incumplimiento de contratos, sanciones legales y daño a la reputación de la organización.</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Proceso de Cadena de Custodia -->
-                            <div class="mt-8">
-                                <h4 class="font-bold text-[#2d7d5a] mb-4 text-center">Proceso de Cadena de Custodia</h4>
-                                <div class="flex flex-wrap justify-center gap-4">
-                                    <div class="bg-white p-3 rounded-lg shadow text-center w-40">
-                                        <div class="bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">1</div>
-                                        <p class="text-sm font-medium">Creación/Recepción</p>
-                                    </div>
-                                    <div class="bg-white p-3 rounded-lg shadow text-center w-40">
-                                        <div class="bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">2</div>
-                                        <p class="text-sm font-medium">Registro Inicial</p>
-                                    </div>
-                                    <div class="bg-white p-3 rounded-lg shadow text-center w-40">
-                                        <div class="bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">3</div>
-                                        <p class="text-sm font-medium">Acceso Controlado</p>
-                                    </div>
-                                    <div class="bg-white p-3 rounded-lg shadow text-center w-40">
-                                        <div class="bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">4</div>
-                                        <p class="text-sm font-medium">Transferencia Segura</p>
-                                    </div>
-                                    <div class="bg-white p-3 rounded-lg shadow text-center w-40">
-                                        <div class="bg-green-100 text-green-800 rounded-full w-10 h-10 flex items-center justify-center mx-auto mb-2">5</div>
-                                        <p class="text-sm font-medium">Archivo/Disposición</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="./Examen_final_SI.html" target="_blank" rel="noopener noreferrer">
-                    <div class="card p-6 mt-12 text-center bg-blue-100">
-                        <h4 class="text-xl font-bold text-[#00446A] mb-4">Evaluación Final</h4>
-                        <p class="text-lg mb-2">Para aprobar la capacitación, deberás rendir y aprobar un examen final de 10 preguntas que cubra todos los módulos.</p>
+                <!-- Evaluación Final -->
+                <div class="card p-8 text-center bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200">
+                    <h4 class="text-2xl font-bold text-[#00446A] mb-4">Evaluación Final</h4>
+                    <p class="text-lg mb-4">Para aprobar la capacitación, deberás rendir y aprobar un examen final de 10 preguntas que cubra todos los módulos.</p>
+                    <div class="bg-white p-4 rounded-lg shadow-md inline-block mb-6">
                         <p class="text-2xl font-bold text-[#009E73]">Resultado Necesario: >80%</p>
                     </div>
-                </a>
+                    <br>
+                    <a href="./Examen_final_SI.html" class="btn btn-primary">
+                        <i class="fas fa-file-alt mr-2"></i>Ir al Examen Final
+                    </a>
+                </div>
+
+                <!-- Navegación entre módulos -->
+                <div class="flex justify-center mt-12">
+                    <a href="./Modulo5_Gestion_Riesgos_de_Seguridad.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left mr-2"></i>Volver al Módulo 5
+                    </a>
+                </div>
             </section>
 
         </main>
@@ -359,6 +323,16 @@
         </footer>
 
         <script type="text/javascript" src="../js/scripts.js"></script>
-
+        <script>
+            // Función para toggle del contenido de clasificación
+            function toggleContent(element) {
+                const content = element.querySelector('.content');
+                const toggleBtn = element.querySelector('.toggle-btn');
+                
+                content.classList.toggle('hidden');
+                toggleBtn.classList.toggle('rotated');
+                element.classList.toggle('active');
+            }
+        </script>
     </body>
 </html>
