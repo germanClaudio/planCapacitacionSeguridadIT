@@ -18,18 +18,18 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
     </head>
 
-    <body class="text-gray-800 bg-gray-50">
+    <body class="font-inter text-gray-800 bg-gray-50">
 
         <header class="bg-white shadow-md sticky top-0 z-10">
             <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-                <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200" height="40">
+                <img src="../images/ITProdimo_logo.png" alt="Logo Prodismo" width="200px" height="40px">
                 
                 <h1 class="text-2xl font-bold text-[#00446A] text-center flex-grow mx-4">
                     Seguridad de la Información: Un Compromiso Estratégico
                 </h1>
                 
-                <a href="./Modulo3_Uso_Responsable_de_Equipos_Software.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
-                    title="Volver al Módulo 3">
+                <a href="./Modulo3_Uso_Responsable_de_Equipos_Software.html" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 smooth-page-transition"
+                    title="Volver al Módulo 3 - Uso Responsable de Equipos">
                     <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
@@ -57,11 +57,11 @@
                     <form id="quiz-form" class="space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre/s</label>
                                 <input type="text" id="name" name="name" autocomplete="on" placeholder="Nombre/s" required class="form-input">
                             </div>
                             <div>
-                                <label for="surname" class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
+                                <label for="surname" class="block text-sm font-medium text-gray-700 mb-1">Apellido/s</label>
                                 <input type="text" id="surname" name="surname" placeholder="Apellido/s" required class="form-input">
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                     </div>
                     
                     <div class="progress-bar">
-                        <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                        <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
                     </div>
                     
                     <div class="card p-6">
@@ -141,6 +141,17 @@
                             <button id="restart-btn" class="btn btn-secondary">
                                 <i class="fas fa-redo mr-2"></i>Reintentar Examen
                             </button>
+                        </div>
+                        <!-- Boton ir a Modulo 4 -->
+                        <div id="contenedor-btn-continuar" class="mt-12 pt-8 border-t border-gray-200 hidden">
+                            <p class="text-lg font-medium text-gray-700 mb-4">
+                                Para continuar con la capacitación, descarga el certificado,<br>luego haz clic en el botón "Continuar" e ingresa tu código de acceso al<br> Módulo 4: Accesos Remotos Seguros.
+                            </p>
+                            <div class="mt-8 mb-2">
+                                <button id="continuar-modulo4" class="btn bg-indigo-500 hover:bg-indigo-600 text-white shadow hover:shadow-lg transition duration-200 hidden" disabled>
+                                    ⏭️ Continuar...
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

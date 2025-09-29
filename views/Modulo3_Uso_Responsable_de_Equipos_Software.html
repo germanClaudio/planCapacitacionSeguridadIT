@@ -30,12 +30,12 @@
                     Seguridad de la Información: Un Compromiso Estratégico
                 </h1>
 
-                <a href="./Modulo2_Ciberseguridad.html" id="btnPreviusPage" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 mr-4"
+                <a href="./Modulo2_Ciberseguridad.html" id="btnPreviusPage" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 mr-4 smooth-page-transition"
                     title="Ir al módulo 2 - Ciberseguridad">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 
-                <a href="#footer-section" id="btnNextPageModulo3" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200"
+                <a href="#footer-section" id="btnNextPageModulo3" class="text-3xl text-[#00446A] hover:text-blue-700 transition-colors duration-200 smooth-page-transition"
                     title="Ir a realizar el examen">
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -61,32 +61,47 @@
                             <div class="text-6xl mb-3">📄</div>
                             <h4 class="text-lg font-bold text-[#00446A]">Política de Uso Aceptable (MC211-IT-2)</h4>
                         </div>
-                        <div class="card text-center p-4">
-                            <div class="text-6xl mb-3">👨‍💻</div>
-                            <h4 class="text-lg font-bold text-[#00446A]">Instalación de software</h4>
-                        </div>
-                        <div class="card text-center p-4">
-                            <div class="text-6xl mb-3">📱</div>
-                            <h4 class="text-lg font-bold text-[#00446A]">Dispositivos personales (BYOD)</h4>
-                        </div>
-                        <div class="card text-center p-4">
-                            <div class="text-6xl mb-3">🌐</div>
-                            <h4 class="text-lg font-bold text-[#00446A]">Navegación web</h4>
-                        </div>
-                        <div class="card text-center p-4">
-                            <div class="text-6xl mb-3">📧</div>
-                            <h4 class="text-lg font-bold text-[#00446A]">Redes sociales</h4>
-                        </div>
-                        <div class="card text-center p-4">
-                            <div class="text-6xl mb-3">📊</div>
-                            <h4 class="text-lg font-bold text-[#00446A]">Manejo de datos sensibles</h4>
-                        </div>
+                        <a href="#instalarSoftware">
+                            <div class="card text-center p-4">
+                                <div class="text-6xl mb-3">👨‍💻</div>
+                                <h4 class="text-lg font-bold text-[#00446A]">Instalación de software</h4>
+                            </div>
+                        </a>
+
+                        <a href="#byod">
+                            <div class="card text-center p-4">
+                                <div class="text-6xl mb-3">📱</div>
+                                <h4 class="text-lg font-bold text-[#00446A]">Dispositivos personales (BYOD)</h4>
+                            </div>
+                        </a>
+
+                        <a href="#navegacion">
+                            <div class="card text-center p-4">
+                                <div class="text-6xl mb-3">🌐</div>
+                                <h4 class="text-lg font-bold text-[#00446A]">Navegación web</h4>
+                            </div>
+                        </a>
+
+                        <a href="#redesSociales">
+                            <div class="card text-center p-4">
+                                <div class="text-6xl mb-3">📧</div>
+                                <h4 class="text-lg font-bold text-[#00446A]">Redes sociales</h4>
+                            </div>
+                        </a>
+
+                        <a href="#datosSensibles">
+                            <div class="card text-center p-4">
+                                <div class="text-6xl mb-3">📊</div>
+                                <h4 class="text-lg font-bold text-[#00446A]">Manejo de datos sensibles</h4>
+                            </div>
+                        </a>
+
                     </div>
                 </section>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <!-- instalar software -->
-                    <div class="card flex flex-col items-center">
+                    <div id="instalarSoftware" class="card flex flex-col items-center">
                         <div class="flow-container relative w-full max-w-2xl mx-auto my-8">
                             <!-- Nodo inicial -->
                             <div class="flow-node mx-auto bg-blue-600 text-white p-4 rounded-lg shadow-md text-center mb-8 relative z-10 max-w-xs">
@@ -162,10 +177,10 @@
                         </div>
                     </div>
 
-
                     <!-- BYOD -->
-                    <div class="card flex flex-col justify-center">
-                        <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Política de <b>B</b>ring <b>Y</b>our <b>O</b>wn <b>D</b>evice</h4>
+                    <div id="byod" class="card flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-[#00446A] mb-2 text-center">Política <b>B</b>ring <b>Y</b>our <b>O</b>wn <b>D</b>evice</h4>
+                        <p class="text-lg text-gray-500 mb-12 text-center">(Trae Tu Propio Dispositivo)</p>
                         <div class="flex items-center space-x-4 mb-4">
                             <span class="text-3xl text-green-600">✅</span>
                             <div class="flex-grow">
@@ -189,7 +204,7 @@
                         </div>
                         <div class="mt-8">
                             <h5 class="text-lg font-bold text-[#00446A] mb-2">Directrices Adicionales:</h5>
-                            <ul class="list-disc list-inside text-sm space-y-2">
+                            <ul class="list-disc list-inside text-sm space-y-2 text-left ml-4">
                                 <li>Mantén actualizado el sistema operativo de tu dispositivo y el software antivirus.</li>
                                 <li>Informa inmediatamente a TI si tu dispositivo personal se pierde o es robado.</li>
                                 <li>No compartas tu contraseña corporativa con nadie, ni la utilices para servicios personales.</li>
@@ -198,7 +213,7 @@
                     </div>
 
                     <!-- Navegación Web -->
-                    <div class="card flex flex-col justify-center">
+                    <div id="navegacion" class="card flex flex-col justify-center">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Navegación Web Segura</h4>
                         <div class="flex items-center space-x-4 mb-4">
                             <span class="text-3xl text-green-600">✅</span>
@@ -230,7 +245,7 @@
                         </div>
                         <div class="mt-8">
                             <h5 class="text-lg font-bold text-[#00446A] mb-1">Consejos de Seguridad Adicionales:</h5>
-                            <ul class="list-disc list-inside text-sm space-y-2">
+                            <ul class="list-disc list-inside text-sm space-y-2 text-left ml-4">
                                 <li>Evita usar la red corporativa para actividades de alto riesgo como descargas de torrents o sitios de streaming no autorizados.</li>
                                 <li>No guardes contraseñas en el navegador, especialmente las de servicios corporativos.</li>
                                 <li>Ten cuidado con las ventanas emergentes que solicitan información o prometen premios. Ciérralas de inmediato o utiliza un bloqueador de anuncios.</li>
@@ -239,7 +254,7 @@
                     </div>
 
                     <!-- Redes Sociales -->
-                    <div class="card flex flex-col justify-center">
+                    <div id="redesSociales" class="card flex flex-col justify-center">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Política de Redes Sociales</h4>
                         <div class="flex items-center space-x-4 mb-4">
                             <span class="text-2xl text-green-600">✅</span>
@@ -271,7 +286,7 @@
                         </div>
                         <div class="mt-8">
                             <h5 class="text-lg font-bold text-[#00446A] mb-2">Consejos de Seguridad Adicionales:</h5>
-                            <ul class="list-disc list-inside text-sm space-y-2">
+                            <ul class="list-disc list-inside text-sm space-y-2 text-left ml-4">
                                 <li>Revisa y ajusta la configuración de privacidad de tus perfiles en redes sociales.</li>
                                 <li>Ten cuidado al hacer clic en enlaces o anuncios. Pueden ser malware o phishing.</li>
                                 <li>Si ves un comentario o publicación maliciosa sobre la empresa, no respondas. Repórtalo a tu supervisor.</li>
@@ -280,7 +295,7 @@
                     </div>
 
                     <!-- Manejo de Datos Sensibles -->
-                    <div class="card flex flex-col justify-center">
+                    <div id="datosSensibles" class="card flex flex-col justify-center">
                         <h4 class="text-xl font-bold text-[#00446A] mb-4 text-center">Manejo de Datos Sensibles</h4>
                         <div class="flex items-center space-x-4 mb-4">
                             <span class="text-4xl text-green-600">✅</span>
@@ -298,7 +313,7 @@
                         </div>
                         <div class="mt-8">
                             <h5 class="text-lg font-bold text-[#00446A] mb-2">Directrices de Uso:</h5>
-                            <ul class="list-disc list-inside text-sm space-y-2">
+                            <ul class="list-disc list-inside text-sm space-y-2 text-left ml-4">
                                 <li>Evita la navegación en sitios de alto riesgo.</li>
                                 <li>No uses equipos de la empresa para banca en línea o actividades personales sensibles.</li>
                                 <li>Sigue las reglas de uso de redes sociales para proteger la imagen de la empresa.</li>

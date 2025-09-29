@@ -19,6 +19,16 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f0f4f8;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+.smooth-page-transition {
+    cursor: pointer;
 }
 
 /* Estilos base */
@@ -437,8 +447,8 @@ canvas {
 
 .equal-width-item {
     flex: 1;
-    min-width: 350px;
-    max-width: 400px;
+    min-width: 400px;
+    max-width: 450px;
     background: white;
     border-radius: 12px;
     padding: 2rem;
@@ -737,7 +747,7 @@ canvas {
     height: 100%;
     background-color: #00446A;
     border-radius: 4px;
-    transition: width 0.5s ease;
+    transition: width 0.9s ease;
 }
 
 .question-counter {
