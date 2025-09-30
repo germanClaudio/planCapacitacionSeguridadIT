@@ -55,10 +55,11 @@ async function loadProtectedCodes() {
             
             // Fallback para desarrollo: códigos de prueba
             console.warn('Usando códigos de prueba para desarrollo');
-            return [
-                "TEST1", "TEST2", "TEST3", "TEST4", "TEST5",
-                "DEV01", "DEV02", "DEV03", "DEV04", "DEV05"
-            ];
+            // return [
+            //     "TEST1", "TEST2", "TEST3", "TEST4", "TEST5",
+            //     "DEV01", "DEV02", "DEV03", "DEV04", "DEV05"
+            // ];
+            return []
         }
     }
 }
