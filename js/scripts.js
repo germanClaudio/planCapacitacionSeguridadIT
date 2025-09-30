@@ -46,7 +46,7 @@ async function loadProtectedCodes() {
         // Fallback: cargar desde JSON
         try {
             const response = await fetch('../data/codes.json');
-            console.log('response: ', response)
+            //console.log('response: ', response)
             return await response.json();
 
         } catch (jsonError) {
@@ -395,15 +395,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 policyCard.style.backgroundColor = '';
             }, 1000);
         });
-
-        // REMOVER: Este código se ejecutaba automáticamente al cargar la página
-        // localStorage.setItem('politicaDescargada', 'true');
-        // Swal.fire({...});
     }
 
-    if (examLink) {
-        examLink.addEventListener('click', verificarAccesoExamen);
-    }
+    if (examLink) { examLink.addEventListener('click', verificarAccesoExamen); }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1632,7 +1626,7 @@ function mostrarModalCodigoAcceso() {
                 icon: 'success',
                 confirmButtonText: 'Ir al Módulo 4',
                 confirmButtonColor: '#10b981',
-                timer: 5000,
+                timer: 3500,
                 timerProgressBar: true
 
             }).then(() => {
@@ -1790,6 +1784,8 @@ function mostrarModalVerificacion() {
             codigoInput.focus();
             return;
         }
+        
+        console.log('1788-codigo: ', codigo)
 
         if (verificarCodigoAcceso(codigo)) {
             // Código correcto - guardar en localStorage y mostrar contenido
@@ -1801,19 +1797,18 @@ function mostrarModalVerificacion() {
                 icon: 'success',
                 title: '¡Código Verificado!',
                 text: 'Acceso concedido al Módulo 4.',
+                confirmButtonText: 'Ir al Módulo 4',
                 confirmButtonColor: '#00446A',
-                timer: 1500,
-                showConfirmButton: false
-            });
+                timer: 3000,
+                showConfirmButton: false,
+                timerProgressBar: true
 
-            // Ocultar modal y mostrar contenido después de un breve delay
-            setTimeout(() => {
+            }).then(() => {
+                // Ocultar modal y mostrar contenido después de un breve delay
                 modalOverlay.remove();
-                if (main) { main.style.display = 'block'};
-                if (footer) {footer.style.display = 'block'};
                 // Redirigir al módulo 4
                 window.location.href = './Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html';
-            }, 1200);
+            });
 
         } else {
             // Código incorrecto
