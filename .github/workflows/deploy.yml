@@ -5,15 +5,25 @@ on:
     branches: [ master ]
   workflow_dispatch:  # Permite ejecución manual
 
+# Permisos necesarios
 permissions:
   contents: write
   pages: write
   id-token: write
 
+# Configuración de concurrencia
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   #deploy:
   build:
+    name: Build and deploy
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
     - name: Checkout repository
@@ -66,28 +76,3 @@ jobs:
       uses: actions/deploy-pages@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-
-# name: Deploy to GitHub Pages
-
-# on:
-#   push:
-#     branches: [ master ]
-#   workflow_dispatch:
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#     - uses: actions/checkout@v3
-    
-#     - name: Generate Codes
-#       run: |
-#         mkdir -p generated
-#         node scripts/generate-codes.js  # Tu script generador
-        
-#     - name: Deploy to GitHub Pages
-#       uses: peaceiris/actions-gh-pages@v3
-#       with:
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
-#         publish_dir: ./
