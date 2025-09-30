@@ -20,6 +20,7 @@
     "dev": "tailwindcss -i ./src/css/input.css -o ./dist/output.css --watch",
     "build": "tailwindcss -i ./src/css/input.css -o ./dist/output.css --minify",
     "tailwind:install": "npm install -D tailwindcss@latest postcss@latest autoprefixer@latest"
+    
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.13"
