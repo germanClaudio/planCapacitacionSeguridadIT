@@ -35,13 +35,13 @@ async function obtenerCodigoAleatorio() {
 
 // En loadProtectedCodes(), agregar un fallback para desarrollo:
 async function loadProtectedCodes() {
-    try {
-        // Intentar cargar como módulo ES6
-        const { getCodes } = await import('../generated/codes.js');
-        return getCodes();
+    // try {
+    //     // Intentar cargar como módulo ES6
+    //     const { getCodes } = await import('../generated/codes.js');
+    //     return getCodes();
 
-    } catch (error) {
-        console.warn('No se pudieron cargar los códigos protegidos:', error);
+    // } catch (error) {
+        //console.warn('No se pudieron cargar los códigos protegidos:', error);
         
         // Fallback: cargar desde JSON
         try {
@@ -57,7 +57,7 @@ async function loadProtectedCodes() {
             
             return []
         }
-    }
+    // }
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp())
@@ -84,7 +84,7 @@ document.querySelectorAll('.smooth-page-transition').forEach(link => {
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     setTimeout(() => {
-        document.body.style.transition = 'opacity 3s ease-in-out';
+        document.body.style.transition = 'opacity 1s ease-in-out';
         document.body.style.opacity = '1';
     }, 50);
 });
