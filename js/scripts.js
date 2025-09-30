@@ -11,7 +11,6 @@ async function initializeApp() {
         return;
     }
     
-    //console.log('Códigos cargados correctamente:', result.codes.length, 'códigos');
     arrayCodes = result.codes; // Asignar a la variable global
     return arrayCodes;
 }
@@ -1700,11 +1699,6 @@ document.addEventListener('DOMContentLoaded', function() {
 //------------------ End Examen Modulo 3 ---------------------------------
 
 //---------------------- Modulo 4 -------------------------------
-// Función para verificar el código
-// function verificarCodigoAcceso(codigo) {
-//     return arrayCodes.includes(codigo.toUpperCase());
-// }
-
 // Función para mostrar el modal de verificación
 function mostrarModalVerificacion() {
     // Crear el overlay/modal
@@ -1817,7 +1811,9 @@ function mostrarModalVerificacion() {
                 modalOverlay.remove();
                 if (main) { main.style.display = 'block'};
                 if (footer) {footer.style.display = 'block'};
-            }, 1600);
+                // Redirigir al módulo 4
+                window.location.href = './Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html';
+            }, 1200);
 
         } else {
             // Código incorrecto
