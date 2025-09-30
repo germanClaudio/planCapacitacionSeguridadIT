@@ -630,19 +630,6 @@ const arrayUsuarios = [
     "zlehmann@prodismo.com"
 ].map(email => email.toLowerCase()).sort();
 
-const arrayCodes = [
-    "K8D9M", "7RN42", "P3Q6X", "9ZL28", "B4F7T",
-    "2H5J9", "M8K3N", "6V7W2", "X4Y8Z", "Q1R5S",
-    "T9U3V", "A2B6C", "D8E4F", "G7H1J", "L3M5P",
-    "4N6Q8", "R2S9T", "V5W7X", "Y8Z3A", "C1D4E",
-    "F6G9H", "J2K5L", "M7N1P", "Q3R8S", "T4V9W",
-    "X2Y6Z", "A7B3C", "E5F8G", "H1J4K", "L9M2N",
-    "8U5RT", "0LKJ6", "5FRW5", "LV7Q9", "HD12K",
-    "2YZ67", "0J5P9", "1GQ49", "UP28I", "S4A7M",
-    "TR84F", "0WM4Y", "HG8T3", "X8D3R", "6GU0V",
-    "SX53Z", "N5G2W", "6GPU5", "JS036", "3AKJ4"
-];
-
 //--------- Elementos comunes ambos examenes -----------
 function capitalizarTexto(texto) {
     if (!texto || typeof texto !== 'string') return '';
@@ -3630,4 +3617,64 @@ function redirigirAEncuesta() {
     window.open("https://forms.office.com/r/qRPMiDE0ab", "_blank");
 }
 //--------------- End Encuesta final ------------------------------
-//--------------- End Examen Final 10 preguntas ------------------------------
+//--------------- End Examen Final 10 preguntas -------------------
+
+let arrayCodes = []
+
+// Cargar los códigos generados
+async function loadProtectedCodes() {
+    try {
+        // Intentar cargar como módulo ES6
+        const { getCodes } = await import('../generated/codes.js');
+        return getCodes();
+
+    } catch (error) {
+        console.warn('No se pudieron cargar los códigos protegidos:', error);
+        
+        // Fallback: cargar desde JSON
+        try {
+            const response = await fetch('../generated/codes.json');
+            return await response.json();
+
+        } catch (jsonError) {
+            console.error('Error cargando códigos:', jsonError);
+            return [];
+        }
+    }
+}
+
+// Función principal
+async function initializeApp() {
+    const arrayCodes = await loadProtectedCodes();
+    
+    if (arrayCodes.length === 0) {
+        console.error('No se pudieron cargar los códigos');
+        return;
+    }
+    
+    console.log('Códigos cargados correctamente:', arrayCodes.length, 'códigos');
+    
+    return arrayCodes
+    // Tu lógica aquí con arrayCodes
+    // Ejemplo:
+    // document.getElementById('app').innerHTML = `
+    //     <h1>App cargada</h1>
+    //     <p>Se cargaron ${arrayCodes.length} códigos correctamente</p>
+    // `;
+}
+
+// Inicializar cuando se cargue la página
+document.addEventListener('DOMContentLoaded', initializeApp);
+
+// const arrayCodes = [
+//     "K8D9M", "7RN42", "P3Q6X", "9ZL28", "B4F7T",
+//     "2H5J9", "M8K3N", "6V7W2", "X4Y8Z", "Q1R5S",
+//     "T9U3V", "A2B6C", "D8E4F", "G7H1J", "L3M5P",
+//     "4N6Q8", "R2S9T", "V5W7X", "Y8Z3A", "C1D4E",
+//     "F6G9H", "J2K5L", "M7N1P", "Q3R8S", "T4V9W",
+//     "X2Y6Z", "A7B3C", "E5F8G", "H1J4K", "L9M2N",
+//     "8U5RT", "0LKJ6", "5FRW5", "LV7Q9", "HD12K",
+//     "2YZ67", "0J5P9", "1GQ49", "UP28I", "S4A7M",
+//     "TR84F", "0WM4Y", "HG8T3", "X8D3R", "6GU0V",
+//     "SX53Z", "N5G2W", "6GPU5", "JS036", "3AKJ4"
+// ];
