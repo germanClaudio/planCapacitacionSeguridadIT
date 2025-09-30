@@ -1621,12 +1621,12 @@ function mostrarModalCodigoAcceso() {
             
             // Mostrar confirmación y redirigir
             Swal.fire({
+                icon: 'success',
                 title: '¡Código Verificado!',
                 text: 'Acceso concedido al Módulo 4.',
-                icon: 'success',
                 confirmButtonText: 'Ir al Módulo 4',
                 confirmButtonColor: '#10b981',
-                timer: 3500,
+                timer: 5000,
                 timerProgressBar: true
 
             }).then(() => {
@@ -1792,6 +1792,9 @@ function mostrarModalVerificacion() {
             localStorage.setItem('modulo4_verificado', 'true');
             localStorage.setItem('codigo_usado', codigo);
             
+             // Ocultar modal y mostrar contenido después de un breve delay
+            modalOverlay.remove();
+
             // Mostrar mensaje de éxito
             Swal.fire({
                 icon: 'success',
@@ -1799,13 +1802,11 @@ function mostrarModalVerificacion() {
                 text: 'Acceso concedido al Módulo 4.',
                 confirmButtonText: 'Ir al Módulo 4',
                 confirmButtonColor: '#00446A',
-                timer: 3000,
+                timer: 5000,
                 showConfirmButton: false,
                 timerProgressBar: true
 
             }).then(() => {
-                // Ocultar modal y mostrar contenido después de un breve delay
-                modalOverlay.remove();
                 // Redirigir al módulo 4
                 window.location.href = './Modulo4_Escritorio_Remoto_AnyDesk_VPN_Accesos_Seguros.html';
             });
